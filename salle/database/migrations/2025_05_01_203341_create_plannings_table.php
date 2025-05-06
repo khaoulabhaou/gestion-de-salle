@@ -14,7 +14,7 @@ class CreatePlanningsTable extends Migration
             $table->string('jour'); // Or use date() for specific dates
             $table->time('heure_debut');
             $table->time('heure_fin');
-            $table->foreignId('cours_id')->constrained('cours');
+            $table->foreignId('cour_id')->constrained('cours');
             $table->timestamps();
         });
     }

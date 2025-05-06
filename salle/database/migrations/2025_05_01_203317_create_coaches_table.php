@@ -10,7 +10,7 @@ class CreateCoachesTable extends Migration
     public function up()
     {
         Schema::create('coaches', function (Blueprint $table) {
-            $table->id('coach_id');
+            $table->id();
             $table->string('nom_complet');
             $table->string('email')->unique();
             $table->string('specialite');

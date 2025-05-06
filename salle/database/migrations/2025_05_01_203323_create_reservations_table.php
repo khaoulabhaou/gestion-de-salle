@@ -12,11 +12,11 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('membre_id')->constrained('membres')->onDelete('cascade');
-            $table->foreignId('cours_id')->constrained('cours')->onDelete('cascade');
+            $table->foreignId('cour_id')->constrained('cours')->onDelete('cascade');
             $table->dateTime('date_reservation')->useCurrent();
             $table->timestamps();
             
-            $table->unique(['id_membre', 'id_cours']); // Prevent duplicate reservations
+            $table->unique(['membre_id', 'cour_id']); // Prevent duplicate reservations
         });
     }
 
