@@ -46,7 +46,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#features">About</a></li>
+                            <li class="scroll-to-section"><a href="{{ route('about') }}">About</a></li>
                             <li class="scroll-to-section"><a href="#our-classes">Classes</a></li>
                             <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
@@ -448,7 +448,7 @@
             </div>
         </div>
     </footer>
-
+    <!-- ***** Footer End ***** -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     

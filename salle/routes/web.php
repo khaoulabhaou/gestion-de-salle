@@ -7,10 +7,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/register', function() {
+Route::get('/register', function () {
     return view('auth.register');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

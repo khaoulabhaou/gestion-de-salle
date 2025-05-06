@@ -14,7 +14,16 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Mot de Passe')" />
+            <div class="flex items-center justify-between">
+                <x-input-label for="password" :value="__('Mot de Passe')" />
+            
+                @if (Route::has('password.request'))
+                    <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                        {{ __('mot de passe oublié?') }}
+                    </a>
+                @endif
+            </div>
+            
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -32,13 +41,10 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('mot de passe oublié?') }}
-                </a>
-            @endif
-
+        <div class="flex items-center justify-between mt-4">
+            <a class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
+                {{ __('Vous n\'avez pas de compte ?') }}
+            </a>
             <button style="background-color: #ed563b; color: white; margin-left: 1rem; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; border-radius: 0.375rem; letter-spacing: 0.05em; border: none; transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;" onmouseover="this.style.backgroundColor='#d04a2a'" onmouseout="this.style.backgroundColor='#ed563b'" onclick="this.style.transform='scale(0.98)'" onmouseup="this.style.transform='scale(1)'" onmousedown="this.style.transform='scale(0.98)'">
                 {{ __('Connecter') }}
             </button>
