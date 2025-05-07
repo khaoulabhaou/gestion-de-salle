@@ -1,3 +1,12 @@
+@extends('layouts.app')
+
+@section('title', 'About')
+
+@section('content')
+<div class="main-banner" id="top">
+    <div class="video-overlay header-text">
+    </div>
+</div>
     <!-- ***** Features Item Start ***** -->
     <section class="section" id="features">
         <div class="container">
@@ -81,3 +90,5 @@
         </div>
     </section>
     <!-- ***** Features Item End ***** -->
+
+@endsection
