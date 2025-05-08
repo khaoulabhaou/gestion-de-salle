@@ -17,7 +17,7 @@
 <!-- ***** Main Banner Area End ***** -->
 
 <!-- ***** Gym Highlights Section Start ***** -->
-<section class="section bg-light my-5 py-5" id="highlights">
+<section class="section bg-light py-5" id="highlights">
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-lg-12">
@@ -56,7 +56,7 @@
 <!-- ***** Gym Highlights Section End ***** --> 
 
 <!-- ***** Gym Gallery Start ***** -->
-<section class="section bg-light my-5 py-5" id="gallery">
+<section class="section bg-light py-5" id="gallery">
     <div class="container">
       <div class="row text-center mb-5">
         <div class="col-lg-12">
@@ -82,7 +82,7 @@
 <!-- ***** Gym Gallery End ***** -->
 
 <!-- ***** Testimonials Start ***** -->
-<section class="section bg-light my-5 py-5" id="testimonials">
+<section class="section bg-light py-5" id="testimonials">
     <div class="container">
       <div class="row text-center mb-5">
         <div class="col-lg-12">
@@ -122,7 +122,7 @@
 <!-- ***** Testimonials End ***** -->
   
 <!-- ***** Pricing Plans Start ***** -->
-<section class="section bg-light my-5 py-5" id="pricing">
+<section class="section bg-light py-5" id="pricing">
     <div class="container">
       <div class="row text-center mb-5">
         <div class="col-lg-12">
@@ -159,7 +159,7 @@
   
   
 <!-- ***** Call to Action Start ***** -->
-<section class="section bg-light my-5 py-5" id="call-to-action">
+<section class="section bg-light py-5" id="call-to-action">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
