@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plannings extends Model
+class Planning extends Model
 {
     use HasFactory;
 
@@ -16,6 +16,6 @@ class Plannings extends Model
     ];
 
     public function cours(){
-        return $this -> belongsTo(Cours::class);
+        return $this -> belongsTo(Cour::class);
     }
 }

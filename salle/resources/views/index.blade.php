@@ -9,7 +9,7 @@
             <h6>work harder, get stronger</h6>
             <h2>easy with our <em>gym</em></h2>
             <div class="main-button scroll-to-section">
-                <a href="#features">Become a member</a>
+                <a href="{{ route('membership') }}">Become a member</a>
             </div>
         </div>
     </div>
@@ -167,7 +167,7 @@
                         <h2>Don't <em>think</em>, begin <em>today</em>!</h2>
                         <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
                         <div class="main-button scroll-to-section">
-                            <a href="#our-classes">Become a member</a>
+                            <a href="{{ route('membership') }}">Become a member</a>
                         </div>
                     </div>
                 </div>

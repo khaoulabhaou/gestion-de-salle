@@ -12,6 +12,7 @@ class CreatePaiementsTable extends Migration
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('membre_id')->constrained('membres')->onDelete('cascade');
+            $table->foreignId('membership_id')->constrained('memberships')->onDelete('cascade');
             $table->dateTime('date')->useCurrent();
             $table->decimal('montant', 8, 2);
             $table->enum('methode',['cash','card']);

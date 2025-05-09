@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paiements extends Model
+class Paiement extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'date',
         'montant',
-        'member_id'
+        'member_id',
+        'membership_id'
     ];
 
     public function members(){
-        return $this->belongsTo(Members::class);
+        return $this->belongsTo(Member::class);
     }
 }

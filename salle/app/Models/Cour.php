@@ -5,28 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cours extends Model
+class Cour extends Model
 {
     use HasFactory;
 
+    protected $table = 'cours';
+
     protected $fillable = [
         'coach_id',
-        'capacite',
+        'capacite_max',
         'titre',
         'description',
         'duree',
-        'prix'
+        'prix',
+        'statut'
     ];
 
     public function reservations(){
-       return $this->hasMany(Reservations::class);
+       return $this->hasMany(Reservation::class);
     }
 
     public function coaches(){
-        return $this->belongsTo(Coaches::class);
+        return $this->belongsTo(Coache::class);
     }
 
     public function plan(){
-        return $this->hasOne(Plannings::class);
+        return $this->hasOne(Planning::class);
     }
 }

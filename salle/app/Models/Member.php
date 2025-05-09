@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Members extends Model
+class Member extends Model
 {
     Use HasFactory;
+
+    protected $table = 'membres';
 
     protected $fillable = [
         'nom_complet',
@@ -27,10 +29,10 @@ class Members extends Model
     ];
 
     public function reservations(){
-        return $this->hasMany(Reservations::class);
+        return $this->hasMany(Reservation::class);
     }
 
     public function paiements(){
-        return $this->hasMany(Paiements::class);
+        return $this->hasMany(Paiement::class, 'membre_id');
     }
 }

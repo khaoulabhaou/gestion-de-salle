@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coaches extends Model
+class Coache extends Model
 {
     use HasFactory;
+    
+    protected $table = 'coaches';
 
     protected $fillable = [
         'nom_complet',
@@ -16,6 +18,6 @@ class Coaches extends Model
     ];
 
     public function Cours(){
-        return $this->hasMany(Cours::class);
+        return $this->hasMany(Cour::class);
     }
 }

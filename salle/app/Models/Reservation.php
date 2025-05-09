@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reservations extends Model
+class Reservation extends Model
 {
     Use HasFactory;
 
@@ -21,10 +21,10 @@ class Reservations extends Model
     ];
 
     public function members(){
-        $this->belongsTo(Members::class);
+        $this->belongsTo(Member::class);
     }
 
     public function cours(){
-        $this->belongsTo(Cours::class);
+        $this->belongsTo(Cour::class);
     }
 }

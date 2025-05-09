@@ -15,7 +15,6 @@ class CreateMembresTable extends Migration
             $table->string('mot_de_passe');
             $table->boolean('abonnement_actif')->default(false);
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreignId('cour_id')->constrained('cours')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
