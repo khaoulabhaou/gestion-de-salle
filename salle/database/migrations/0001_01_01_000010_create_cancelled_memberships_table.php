@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-// database/migrations/xxxx_xx_xx_xxxxxx_create_cancelled_memberships_table.php
 
 public function up()
 {

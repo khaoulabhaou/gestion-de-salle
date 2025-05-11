@@ -10,7 +10,7 @@
 {{-- ✨ En-tête de Page --}}
 <div class="page-heading" style="background: url('/images/contact-bg.jpg') no-repeat center center; background-size: cover; padding: 100px 0;">
     <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold">Contactez-nous</h1>
+        <h1 class="display-4 fw-bold mt-5">Contactez-nous</h1>
         <p class="lead">Nous sommes à votre écoute. Envoyez-nous un message !</p>
     </div>
 </div>
@@ -30,8 +30,15 @@
             {{-- 📝 Formulaire de Contact --}}
             <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
                 <div class="contact-form bg-white p-5 shadow rounded">
+                    {{-- Display Success Message --}}
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show text-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <h4 class="mb-4 text-light">Envoyez-nous un message</h4>
-                    <form id="contact" action="" method="POST">
+                    <form id="contact" action="{{ route('contact.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <input name="name" type="text" class="form-control" placeholder="Votre Nom*" required>
@@ -78,11 +85,10 @@
                 <div class="p-4 rounded bg-white shadow-sm">
                     <i class="fas fa-envelope fa-2x text-secondary mb-3"></i>
                     <h5>Email</h5>
-                    <p>contact@trainingstudio.com</p>
+                    <p>trainingstudio101.com</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 @endsection

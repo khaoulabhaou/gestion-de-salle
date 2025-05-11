@@ -57,4 +57,9 @@ class User extends Authenticatable
         return $this->hasOne(Member::class, 'user_id');
     }
 
+    public function isMember()
+    {
+        return $this->member && $this->member->abonnement_actif && (!$this->member->expiration_date || $this->member->expiration_date > now());
+    }
+
 }

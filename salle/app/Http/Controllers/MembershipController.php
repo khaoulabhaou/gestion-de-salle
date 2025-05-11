@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cour;
 use Carbon\Carbon;
 use App\Models\Member;
 use App\Models\Paiement;
@@ -146,26 +147,26 @@ class MembershipController extends Controller
         return redirect()->route('profile.edit')->with('success', 'Abonnement annulé et votre compte a été supprimé.');
     }
 
-public function showMembershipInfo()
-{
-    $user = Auth::user()->load('member');  // Load the member relationship
-
-    // Check if the user has a membership
-    if ($user->member) {
-        $latestPayment = $user->member->paiements()->latest()->first();
-        $membershipEndDate = Carbon::parse($user->member->expiration_date);  // Ensure it's a Carbon instance
-
-        // Calculate the remaining days for the membership
-        $daysLeft = now()->diffInDays($membershipEndDate, false);
-    } else {
-        // If no member, set $latestPayment and $membershipEndDate to null
-        $latestPayment = null;
-        $membershipEndDate = null;
-        $daysLeft = null;
+    public function showMembershipInfo()
+    {
+        $user = Auth::user()->load('member');  // Load the member relationship
+    
+        // Check if the user has a membership
+        if ($user->member) {
+            $latestPayment = $user->member->paiements()->latest()->first();
+            $membershipEndDate = Carbon::parse($user->member->expiration_date);  // Ensure it's a Carbon instance
+    
+            // Calculate the remaining days for the membership
+            $daysLeft = now()->diffInDays($membershipEndDate, false);
+        } else {
+            // If no member, set $latestPayment and $membershipEndDate to null
+            $latestPayment = null;
+            $membershipEndDate = null;
+            $daysLeft = null;
+        }
+    
+        // Pass the data to the view
+        return view('membershipdetails', compact('user', 'latestPayment', 'membershipEndDate', 'daysLeft'));
     }
-
-    // Pass the data to the view
-    return view('membershipdetails', compact('user', 'latestPayment', 'membershipEndDate', 'daysLeft'));
-}
 
 }

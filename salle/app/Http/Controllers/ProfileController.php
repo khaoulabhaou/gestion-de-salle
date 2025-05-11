@@ -9,9 +9,7 @@ class ProfileController extends Controller
 {
 public function edit()
 {
-    $user = Auth::user()->load('member'); // Load the member relationship
-
-    // Check if the user has a membership
+    $user = Auth::user()->load('member');
     $hasMembership = $user->member ? true : false;
 
     return view('profile.edit', compact('user', 'hasMembership'));
@@ -37,7 +35,7 @@ public function update(Request $request)
     }
 
     $user->update($data);
-    return redirect()->route('profile.edit')->with('success', 'Profile updated!');
+    return redirect()->route('profile.edit')->with('success', 'Profil mis à jour!');
 }
 
 }

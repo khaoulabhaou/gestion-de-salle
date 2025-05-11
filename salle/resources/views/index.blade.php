@@ -139,43 +139,6 @@
 </section>
 <!-- ***** Témoignages - Fin ***** -->
   
-<!-- ***** Tarifs - Début ***** -->
-<section class="section bg-light py-5" id="pricing">
-    <div class="container">
-      <div class="row text-center mb-5">
-        <div class="col-lg-12">
-          <h2 class="section-title">Nos Abonnements</h2>
-          <p class="section-subtitle">Choisissez ce qui correspond à vos besoins</p>
-        </div>
-      </div>
-      <div class="row text-center">
-        <div class="col-md-4 mb-4">
-          <div class="card p-4 shadow-sm">
-            <h4>Basique</h4>
-            <p class="text-muted">L'essentiel seulement</p>
-            <h3>19€/1 mois</h3>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card p-4 shadow-sm bg-dark text-white">
-            <h4>Standard</h4>
-            <p class="text-muted">Le plus populaire</p>
-            <h3>29€/2 mois</h3>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card p-4 shadow-sm">
-            <h4>Premium</h4>
-            <p class="text-muted">Accès illimité + avantages</p>
-            <h3>39€/3 mois</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ***** Tarifs - Fin ***** -->
-  
-  
 <!-- ***** Appel à l'action - Début ***** -->
 <section class="section bg-light py-5" id="call-to-action">
         <div class="container">

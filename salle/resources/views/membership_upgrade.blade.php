@@ -26,7 +26,7 @@
                     <select name="membership_id" id="membership" class="form-select mt-2 p-3">
                         @foreach($memberships as $membership)
                             <option value="{{ $membership->id }}" {{ $user->membership_id === $membership->id ? 'selected' : '' }}>
-                                {{ $membership->name }} - {{ $membership->price }}€ (Durée: {{ $membership->duration }} mois)
+                                {{ $membership->name }} - {{ $membership->price }}MRU (Durée: {{ $membership->duration }} mois)
                             </option>
                         @endforeach
                     </select>
@@ -66,7 +66,7 @@
                     <select name="membership_id" id="membership" class="form-select mt-2 p-3">
                         @foreach($memberships as $membership)
                             <option value="{{ $membership->id }}">
-                                {{ $membership->name }} - {{ $membership->price }}€ (Durée: {{ $membership->duration }} mois)
+                                {{ $membership->name }} - {{ $membership->price }}MRU (Durée: {{ $membership->duration }} mois)
                             </option>
                         @endforeach
                     </select>

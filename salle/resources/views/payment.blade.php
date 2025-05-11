@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <p class="text-center text-muted mb-4">{{ $membership->description }}</p>
                     <div class="text-center mb-4">
-                        <span class="h3 fw-bold">{{ number_format($membership->price, 2) }}€</span>
+                        <span class="h3 fw-bold">{{ number_format($membership->price, 2) }}MRU</span>
                         <span class="text-muted">/mois</span>
                     </div>
 

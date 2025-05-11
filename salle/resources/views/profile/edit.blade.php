@@ -10,9 +10,12 @@
 <div class="profile-container" style="margin-top: 8rem; max-width: 900px; margin-left: auto; margin-right: auto;">
     <h1 style="text-align:center;">Votre Profil</h1>
 
-    @if(session('success')) 
-        <p class="success">{{ session('success') }}</p> 
-    @endif
+@if(session('success'))
+    <div style="color: #ed563b;">
+        {{ session('success') }}
+    </div>
+@endif
+
 
     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf

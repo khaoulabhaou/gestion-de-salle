@@ -24,7 +24,7 @@
 
                 <div class="mb-3 d-flex justify-content-between">
                     <h5 class="fw-semibold">Prix :</h5>
-                    <p>{{ $latestPayment->membership->price }} €</p>
+                    <p>{{ $latestPayment->membership->price }} MRU</p>
                 </div>
 
                 <div class="mb-3 d-flex justify-content-between">

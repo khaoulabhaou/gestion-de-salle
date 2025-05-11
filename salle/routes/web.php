@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
@@ -96,6 +97,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/payment/{membership}/process', [PaymentController::class, 'processPayment'])->name('payment.process');
 });
 
+// -------------------------------------------
+// Contact Controller
+// -------------------------------------------
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 // --------------------------------------------
 // Public Views
 // --------------------------------------------
@@ -105,7 +112,7 @@ Route::get('/', function () {
 })->name('index');
 Route::get('/about', fn () => view('about'));
 Route::get('/classes', fn () => view('classes'));
-Route::get('/schedules', fn () => view('schedules'));
+Route::get('/schedules', fn () => view('schedules'))->name('schedules');
 Route::get('/trainers', fn () => view('trainers'))->name('trainers');
 Route::get('/contact', fn () => view('contact'))->name('contact');
 // Route::get('/membership', fn() => view('membership'));

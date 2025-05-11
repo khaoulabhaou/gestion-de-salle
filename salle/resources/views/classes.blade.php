@@ -7,6 +7,7 @@
     <div class="video-overlay header-text">
     </div>
 </div>
+
     <!-- ***** Nos Cours - Début ***** -->
     <section class="section" id="our-classes">
         <div class="container">
@@ -26,7 +27,7 @@
                   <li><a href='#tabs-2'><img src="{{ asset('images/tabs-first-icon.png') }}" alt="">Cours Intermédiaire</a></a></li>
                   <li><a href='#tabs-3'><img src="{{ asset('images/tabs-first-icon.png') }}" alt="">Cours Avancé</a></a></li>
                   <li><a href='#tabs-4'><img src="{{ asset('images/tabs-first-icon.png') }}" alt="">Cours Privé</a></a></li>
-                  <div class="main-rounded-button"><a href="#">Voir Tous les Horaires</a></div>
+                  <div class="main-rounded-button"><a href="{{ route('schedules') }}">Voir Tous les Horaires</a></div>
                 </ul>
               </div>
               <div class="col-lg-8">
@@ -36,7 +37,7 @@
                     <h4>Cours Débutant</h4>
                     <p>Parfait pour ceux qui commencent leur parcours fitness. Nos coachs certifiés vous guideront pas à pas dans des exercices adaptés à votre niveau, en mettant l'accent sur la technique et la sécurité.</p>
                     <div class="main-button">
-                        <a href="#">Voir les Horaires</a>
+                        <a href="{{ route('schedules') }}">Voir les Horaires</a>
                     </div>
                   </article>
                   <article id='tabs-2'>
@@ -44,7 +45,7 @@
                     <h4>Cours Intermédiaire</h4>
                     <p>Pour ceux qui maîtrisent les bases et veulent passer au niveau supérieur. Ce cours intensif combine cardio et musculation pour des résultats optimaux, avec des exercices variés et motivants.</p>
                     <div class="main-button">
-                        <a href="#">Voir les Horaires</a>
+                        <a href="{{ route('schedules') }}">Voir les Horaires</a>
                     </div>
                   </article>
                   <article id='tabs-3'>
@@ -52,7 +53,7 @@
                     <h4>Cours Avancé</h4>
                     <p>Un programme exigeant pour athlètes confirmés. Poussez vos limites avec des séances haute intensité, des circuits training et des techniques professionnelles sous la supervision de nos meilleurs coachs.</p>
                     <div class="main-button">
-                        <a href="#">Voir les Horaires</a>
+                        <a href="{{ route('schedules') }}">Voir les Horaires</a>
                     </div>
                   </article>
                   <article id='tabs-4'>
@@ -60,7 +61,7 @@
                     <h4>Cours Privé</h4>
                     <p>Un coaching 100% personnalisé adapté à vos objectifs spécifiques. Bénéficiez de l'attention exclusive d'un de nos experts pour un programme sur mesure et des résultats optimaux.</p>
                     <div class="main-button">
-                        <a href="#">Voir les Horaires</a>
+                        <a href="{{ route('schedules') }}">Voir les Horaires</a>
                     </div>
                   </article>
                 </section>

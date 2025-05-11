@@ -40,7 +40,7 @@
                             @endforeach
                         </ul>
                         <div class="text-center my-4">
-                            <span class="display-4 fw-bold">{{ number_format($membership->price, 2) }}€</span>
+                            <span class="display-4 fw-bold">{{ number_format($membership->price, 2) }}MRU</span>
                             <span class="text-muted">/mois</span>
                         </div>
                     </div>

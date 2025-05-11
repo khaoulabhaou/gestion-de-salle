@@ -15,7 +15,7 @@
                     <div class="section-heading">
                         <h2>Choisissez votre <em>Programme</em></h2>
                         <img src="{{ asset('images/line-dec.png') }}" alt="vagues décoratives">
-                        <p>Training Studio est un template CSS gratuit pour salles de sport et centres de fitness. Vous pouvez utiliser cette mise en page pour votre site commercial.</p>
+                        <p>Découvrez nos différents programmes d'entraînement adaptés à vos objectifs et à votre niveau.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -25,9 +25,8 @@
                                 <img src="{{ asset('images/features-first-icon.png') }}" alt="Fitness de base">
                             </div>
                             <div class="right-content">
-                                <h4>Fitness Basique</h4>
-                                <p>Merci de ne pas redistribuer ce fichier ZIP sur des sites de collection de templates. Ce n'est pas autorisé.</p>
-                                <a href="#" class="text-button">Découvrir Plus</a>
+                                <h4>Programme Fitness Basique</h4>
+                                <p>Un programme pour débutants, conçu pour améliorer votre forme physique et vous donner un bon point de départ.</p>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -35,9 +34,8 @@
                                 <img src="{{ asset('images/features-first-icon.png') }}" alt="Nouvel entraînement">
                             </div>
                             <div class="right-content">
-                                <h4>Nouveau Programme Gym</h4>
-                                <p>Si vous souhaitez soutenir TemplateMo via PayPal, n'hésitez pas à nous contacter. Nous l'apprécions beaucoup.</p>
-                                <a href="#" class="text-button">Découvrir Plus</a>
+                                <h4>Programme de Gym Avancé</h4>
+                                <p>Un entraînement plus intensif pour ceux qui cherchent à passer au niveau supérieur et à développer leur force.</p>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -45,9 +43,8 @@
                                 <img src="{{ asset('images/features-first-icon.png') }}" alt="Cours de musculation">
                             </div>
                             <div class="right-content">
-                                <h4>Cours de Musculation Basique</h4>
-                                <p>Crédit à <a rel="nofollow" href="https://www.pexels.com" target="_blank">Pexels</a> pour les images et vidéos utilisées dans ce template HTML.</p>
-                                <a href="#" class="text-button">Découvrir Plus</a>
+                                <h4>Cours de Musculation de Base</h4>
+                                <p>Apprenez les techniques de musculation de base et construisez une fondation solide pour des entraînements plus avancés.</p>
                             </div>
                         </li>
                     </ul>
@@ -60,8 +57,7 @@
                             </div>
                             <div class="right-content">
                                 <h4>Cours de Musculation Avancée</h4>
-                                <p>Vous pouvez parcourir nos templates <a rel="nofollow" href="https://templatemo.com/tag/digital-marketing" target="_parent">Marketing Digital</a> ou <a href="https://templatemo.com/tag/corporate">Corporate</a> sur notre site.</p>
-                                <a href="#" class="text-button">Découvrir Plus</a>
+                                <p>Progressez avec des techniques avancées de musculation pour cibler les muscles profonds et développer une force maximale.</p>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -69,9 +65,8 @@
                                 <img src="{{ asset('images/features-first-icon.png') }}" alt="Yoga">
                             </div>
                             <div class="right-content">
-                                <h4>Cours de Yoga</h4>
-                                <p>Ce template est construit sur le framework Bootstrap v4.3.1. Il est facile d'adapter les colonnes et sections.</p>
-                                <a href="#" class="text-button">Découvrir Plus</a>
+                                <h4>Programme de Yoga</h4>
+                                <p>Améliorez votre flexibilité, votre équilibre et votre bien-être mental avec nos séances de yoga relaxantes.</p>
                             </div>
                         </li>
                         <li class="feature-item">
@@ -79,9 +74,8 @@
                                 <img src="{{ asset('images/features-first-icon.png') }}" alt="Bodybuilding">
                             </div>
                             <div class="right-content">
-                                <h4>Cours de Bodybuilding</h4>
-                                <p>Suspendisse fringilla et nisi et mattis. Curabitur sed finibus nisi. Integer nibh sapien, vehicula et auctor.</p>
-                                <a href="#" class="text-button">Découvrir Plus</a>
+                                <h4>Programme de Bodybuilding</h4>
+                                <p>Boostez votre masse musculaire avec ce programme de bodybuilding, conçu pour ceux qui veulent transformer leur corps.</p>
                             </div>
                         </li>
                     </ul>
