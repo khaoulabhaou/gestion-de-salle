@@ -15,7 +15,10 @@ class Member extends Model
         'nom_complet',
         'email',
         'mot_de_passe',
-        'abonnement_actif'
+        'abonnement_actif',
+        'user_id',
+        'membership_id',
+        'expiration_date',
     ];
 
     protected $hidden = [
@@ -35,4 +38,14 @@ class Member extends Model
     public function paiements(){
         return $this->hasMany(Paiement::class, 'membre_id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class);
+    }
+
 }

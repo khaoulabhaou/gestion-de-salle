@@ -15,7 +15,7 @@ class Planning extends Model
         'cours_id'
     ];
 
-    public function cours(){
+    public function cour(){
         return $this -> belongsTo(Cour::class);
     }
 }

@@ -16,7 +16,11 @@ class Paiement extends Model
         'membership_id'
     ];
 
-    public function members(){
+    public function member(){
         return $this->belongsTo(Member::class);
+    }
+
+    public function membership(){
+        return $this->belongsTo(Membership::class,'membership_id');
     }
 }

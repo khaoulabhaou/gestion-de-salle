@@ -74,11 +74,28 @@ Route::middleware('auth')->group(function () {
 });
 
 // --------------------------------------------
-// Membership and Payment controller
+// Membership and controller
 // --------------------------------------------
-Route::get('/membership', [MembershipController::class, 'index'])->name('membership');
-Route::get('/payment/{membership}', [PaymentController::class, 'show'])->name('payment.show');
-Route::post('/payment/{membership}/process', [PaymentController::class, 'processPayment'])->name('payment.process');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/membership', [MembershipController::class, 'index'])->name('membership');
+    Route::get('cancel-membership', [MembershipController::class, 'cancelMembership'])->name('membership.cancel');
+    Route::post('cancel-membership', [MembershipController::class, 'cancelMembershipSubmit'])->name('membership.cancel.submit');
+    Route::get('upgrade-membership', [MembershipController::class, 'upgradeMembership'])->name('membership.upgrade');
+    Route::post('upgrade-membership', [MembershipController::class, 'upgradeMembershipSubmit'])->name('membership.upgrade.submit');
+    Route::post('subscribe', [MembershipController::class, 'subscribe'])->name('membership.subscribe');
+    Route::get('/membership/info', [MembershipController::class, 'showMembershipInfo'])->name('membership.info');
+});
+
+// --------------------------------------------
+// Payment controller
+// --------------------------------------------
+
+Route::middleware('auth')->group(function () {
+    Route::get('/payment/{membership}', [PaymentController::class, 'show'])->name('payment.show');
+    Route::post('/payment/{membership}/process', [PaymentController::class, 'processPayment'])->name('payment.process');
+});
+
 // --------------------------------------------
 // Public Views
 // --------------------------------------------
@@ -89,8 +106,8 @@ Route::get('/', function () {
 Route::get('/about', fn () => view('about'));
 Route::get('/classes', fn () => view('classes'));
 Route::get('/schedules', fn () => view('schedules'));
-Route::get('/trainers', fn () => view('trainers'));
-Route::get('/contact', fn () => view('contact'));
+Route::get('/trainers', fn () => view('trainers'))->name('trainers');
+Route::get('/contact', fn () => view('contact'))->name('contact');
 // Route::get('/membership', fn() => view('membership'));
 
 // Optional: If using Laravel Breeze or Jetstream

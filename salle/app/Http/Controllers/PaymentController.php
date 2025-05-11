@@ -13,9 +13,7 @@ class PaymentController extends Controller
     public function show(Membership $membership)
     {
         return view('payment', compact('membership'));
-    }
-
-    public function processPayment(Request $request, Membership $membership)
+    }    public function processPayment(Request $request, Membership $membership)
     {
         // Check if the user already has an active membership
         $user = auth()->user();
@@ -24,7 +22,7 @@ class PaymentController extends Controller
                                 ->first();
     
         if ($existingMember) {
-            return redirect()->route('membership')->with('error', 'You already have an active membership.');
+            return redirect()->route('membership')->with('error', 'Vous avez déjà un abonnement actif.');
         }
     
         // Validate payment method
@@ -41,6 +39,7 @@ class PaymentController extends Controller
                 'mot_de_passe' => bcrypt('defaultpassword'),
                 'abonnement_actif' => true,
                 'membership_id' => $membership->id,
+                'user_id' => $user->id,
             ]
         );
     
@@ -58,7 +57,7 @@ class PaymentController extends Controller
         ]);
     
         // Redirect to a success page
-        return redirect()->route('membership')->with('success', 'You are now a member!');
+        return redirect()->route('membership')->with('success', 'Vous êtes maintenant membre!');
     }
     
     

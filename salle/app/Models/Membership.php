@@ -20,6 +20,6 @@ class Membership extends Model
 
     public function members()
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(Member::class, 'membership_id');
     }
 }

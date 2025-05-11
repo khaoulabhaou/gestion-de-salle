@@ -1,104 +1,122 @@
 @extends('layouts.app')
-<!-- ***** Main Banner Area Start ***** -->
+@php
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\DB;
+
+    $hasMembership = false;
+
+    if (Auth::check()) {
+        $userEmail = Auth::user()->email;
+        $hasMembership = DB::table('membres')
+            ->where('email', $userEmail)
+            ->where('abonnement_actif', true)
+            ->exists();
+    }
+@endphp
+<!-- ***** Zone de bannière principale - Début ***** -->
 <div class="main-banner" id="top">
     <video autoplay muted loop id="bg-video">
         <source src="{{ asset('images/gym-video.mp4') }}" type="video/mp4" />
     </video>
     <div class="video-overlay header-text">
         <div class="caption">
-            <h6>work harder, get stronger</h6>
-            <h2>easy with our <em>gym</em></h2>
-            <div class="main-button scroll-to-section">
-                <a href="{{ route('membership') }}">Become a member</a>
-            </div>
+            <h6>Travaillez plus dur, devenez plus fort</h6>
+            <h2>Facile avec notre <em>salle de sport</em></h2>
+              <div class="main-button scroll-to-section">
+                  @if ($hasMembership)
+                      <a href="{{ route('membership.info') }}">Mon Abonnement</a>
+                  @else
+                      <a href="{{ route('membership') }}">Devenir Membre</a>
+                  @endif
+              </div>
         </div>
     </div>
 </div>
-<!-- ***** Main Banner Area End ***** -->
+<!-- ***** Zone de bannière principale - Fin ***** -->
 
-<!-- ***** Gym Highlights Section Start ***** -->
+<!-- ***** Section Points Forts - Début ***** -->
 <section class="section bg-light py-5" id="highlights">
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-lg-12">
-                <h2 class="section-title">Why Choose Us</h2>
-                <p class="section-subtitle">Boost your goals with our space, gear, and vibe</p>
+                <h2 class="section-title">Pourquoi Nous Choisir</h2>
+                <p class="section-subtitle">Boostez vos objectifs avec notre espace, équipement et ambiance</p>
             </div>
         </div>
         <div class="row">
-            <!-- Card 1 -->
+            <!-- Carte 1 -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm h-100 text-center p-4">
                     <i class="fa fa-dumbbell fa-3x text-danger mb-3"></i>
-                    <h5 class="card-title">Top Equipment</h5>
-                    <p class="card-text">Train with the latest gym gear and machines, ready for all levels.</p>
+                    <h5 class="card-title">Équipement Haut de Gamme</h5>
+                    <p class="card-text">Entraînez-vous avec les derniers équipements et machines, adaptés à tous niveaux.</p>
                 </div>
             </div>
-            <!-- Card 2 -->
+            <!-- Carte 2 -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm h-100 text-center p-4">
                     <i class="fa fa-fire fa-3x text-warning mb-3"></i>
-                    <h5 class="card-title">Intense Vibes</h5>
-                    <p class="card-text">The energy here hits different. Music, lights, and real motivation.</p>
+                    <h5 class="card-title">Ambiance Intense</h5>
+                    <p class="card-text">L'énergie ici est unique. Musique, lumières et vraie motivation.</p>
                 </div>
             </div>
-            <!-- Card 3 -->
+            <!-- Carte 3 -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm h-100 text-center p-4">
                     <i class="fa fa-heartbeat fa-3x text-success mb-3"></i>
-                    <h5 class="card-title">Wellness First</h5>
-                    <p class="card-text">From lifting to recovery, we’ve got your full health in mind.</p>
+                    <h5 class="card-title">Bien-être en Priorité</h5>
+                    <p class="card-text">De la musculation à la récupération, nous pensons à votre santé globale.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ***** Gym Highlights Section End ***** --> 
+<!-- ***** Section Points Forts - Fin ***** --> 
 
-<!-- ***** Gym Gallery Start ***** -->
+<!-- ***** Galerie - Début ***** -->
 <section class="section bg-light py-5" id="gallery">
     <div class="container">
       <div class="row text-center mb-5">
         <div class="col-lg-12">
-          <h2 class="section-title">Gym Vibes</h2>
-          <p class="section-subtitle">A peek into our daily grind</p>
+          <h2 class="section-title">Ambiance du Club</h2>
+          <p class="section-subtitle">Un aperçu de notre quotidien</p>
         </div>
       </div>
       <div class="d-flex justify-content-center">
         <div class="row g-3 justify-content-center">
           <div class="col-md-4">
-            <img src="{{ asset('images/third-trainer.jpg') }}" class="img-fluid rounded" alt="">
+            <img src="{{ asset('images/third-trainer.jpg') }}" class="img-fluid rounded" alt="Entraîneur 1">
           </div>
           <div class="col-md-4">
-            <img src="{{ asset('images/second-trainer.jpg') }}" class="img-fluid rounded" alt="">
+            <img src="{{ asset('images/second-trainer.jpg') }}" class="img-fluid rounded" alt="Entraîneur 2">
           </div>
           <div class="col-md-4">
-            <img src="{{ asset('images/first-trainer.jpg') }}" class="img-fluid rounded" alt="">
+            <img src="{{ asset('images/first-trainer.jpg') }}" class="img-fluid rounded" alt="Entraîneur 3">
           </div>
         </div>
       </div>      
     </div>
   </section>
-<!-- ***** Gym Gallery End ***** -->
+<!-- ***** Galerie - Fin ***** -->
 
-<!-- ***** Testimonials Start ***** -->
+<!-- ***** Témoignages - Début ***** -->
 <section class="section bg-light py-5" id="testimonials">
     <div class="container">
       <div class="row text-center mb-5">
         <div class="col-lg-12">
-          <h2 class="section-title">What Members Say</h2>
+          <h2 class="section-title">Témoignages de Membres</h2>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 mb-4">
           <div class="card p-4 shadow-sm">
-            <p>"This gym gave me confidence and results. Literally my second home!"</p>
+            <p>"Cette salle m'a donné confiance et des résultats. C'est comme une deuxième maison !"</p>
             <h6 class="mt-3">– Sarah M.</h6>
           </div>
         </div>
         <div class="col-md-6 mb-4">
           <div class="card p-4 shadow-sm">
-            <p>"Clean, aesthetic, and the playlist is always fire. 10/10!"</p>
+            <p>"Propre, esthétique et la playlist est toujours au top. 10/10 !"</p>
             <h6 class="mt-3">– Jamal R.</h6>
           </div>
         </div>
@@ -106,72 +124,76 @@
       <div class="row">
         <div class="col-md-6 mb-4">
           <div class="card p-4 shadow-sm">
-            <p>"This gym gave me confidence and results. Literally my second home!"</p>
-            <h6 class="mt-3">– Sarah M.</h6>
+            <p>"Les coachs sont incroyables et m'ont aidé à atteindre mes objectifs."</p>
+            <h6 class="mt-3">– Thomas L.</h6>
           </div>
         </div>
         <div class="col-md-6 mb-4">
           <div class="card p-4 shadow-sm">
-            <p>"Clean, aesthetic, and the playlist is always fire. 10/10!"</p>
-            <h6 class="mt-3">– Jamal R.</h6>
+            <p>"L'abonnement premium vaut chaque centime. Accès 24/7 et équipement neuf."</p>
+            <h6 class="mt-3">– Élodie P.</h6>
           </div>
         </div>
       </div>
     </div>
 </section>
-<!-- ***** Testimonials End ***** -->
+<!-- ***** Témoignages - Fin ***** -->
   
-<!-- ***** Pricing Plans Start ***** -->
+<!-- ***** Tarifs - Début ***** -->
 <section class="section bg-light py-5" id="pricing">
     <div class="container">
       <div class="row text-center mb-5">
         <div class="col-lg-12">
-          <h2 class="section-title">Membership Plans</h2>
-          <p class="section-subtitle">Pick what fits your grind</p>
+          <h2 class="section-title">Nos Abonnements</h2>
+          <p class="section-subtitle">Choisissez ce qui correspond à vos besoins</p>
         </div>
       </div>
       <div class="row text-center">
         <div class="col-md-4 mb-4">
           <div class="card p-4 shadow-sm">
-            <h4>Basic</h4>
-            <p class="text-muted">Just the essentials</p>
-            <h3>$19/mo</h3>
+            <h4>Basique</h4>
+            <p class="text-muted">L'essentiel seulement</p>
+            <h3>19€/1 mois</h3>
           </div>
         </div>
         <div class="col-md-4 mb-4">
           <div class="card p-4 shadow-sm bg-dark text-white">
             <h4>Standard</h4>
-            <p class="text-muted">Best for most people</p>
-            <h3>$29/mo</h3>
+            <p class="text-muted">Le plus populaire</p>
+            <h3>29€/2 mois</h3>
           </div>
         </div>
         <div class="col-md-4 mb-4">
           <div class="card p-4 shadow-sm">
             <h4>Premium</h4>
-            <p class="text-muted">All access + perks</p>
-            <h3>$39/mo</h3>
+            <p class="text-muted">Accès illimité + avantages</p>
+            <h3>39€/3 mois</h3>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- ***** Pricing Plans End ***** -->
+  <!-- ***** Tarifs - Fin ***** -->
   
   
-<!-- ***** Call to Action Start ***** -->
+<!-- ***** Appel à l'action - Début ***** -->
 <section class="section bg-light py-5" id="call-to-action">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cta-content">
-                        <h2>Don't <em>think</em>, begin <em>today</em>!</h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
+                        <h2>Ne <em>réfléchissez</em> plus, commencez <em>aujourd'hui</em> !</h2>
+                        <p>Rejoignez notre communauté sportive et transformez votre corps et votre esprit. Nos coachs experts vous guideront à chaque étape.</p>
                         <div class="main-button scroll-to-section">
-                            <a href="{{ route('membership') }}">Become a member</a>
+                            @if ($hasMembership)
+                                <a href="{{ route('membership.info') }}">Mon Abonnement</a>
+                            @else
+                                <a href="{{ route('membership') }}">Devenir Membre</a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </section>
-<!-- ***** Call to Action End ***** -->
+<!-- ***** Appel à l'action - Fin ***** -->

@@ -15,6 +15,9 @@ class CreateMembresTable extends Migration
             $table->string('mot_de_passe');
             $table->boolean('abonnement_actif')->default(false);
             $table->timestamp('email_verified_at')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('membership_id')->nullable()->constrained('memberships')->onDelete('cascade');
+            $table->date('expiration_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

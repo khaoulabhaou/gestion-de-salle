@@ -20,11 +20,11 @@ class Reservation extends Model
         'date_reservation' => 'datetime'
     ];
 
-    public function members(){
+    public function member(){
         $this->belongsTo(Member::class);
     }
 
-    public function cours(){
+    public function cour(){
         $this->belongsTo(Cour::class);
     }
 }
