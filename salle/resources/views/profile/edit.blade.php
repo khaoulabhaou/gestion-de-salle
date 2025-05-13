@@ -42,8 +42,8 @@
                 <div class="form-group"><label>Téléphone</label><input name="phone" value="{{ $user->phone }}"></div>
                 <div class="form-group"><label>Genre</label>
                     <select name="gender">
-                        <option {{ $user->gender === 'Male' ? 'selected' : '' }}>Homme</option>
-                        <option {{ $user->gender === 'Female' ? 'selected' : '' }}>Femme</option>
+                        <option {{ $user->gender === 'Homme' ? 'selected' : '' }}>Homme</option>
+                        <option {{ $user->gender === 'Femme' ? 'selected' : '' }}>Femme</option>
                     </select>
                 </div>
                 <div class="form-group"><label>Objectif</label><input name="goal" value="{{ $user->goal }}"></div>
