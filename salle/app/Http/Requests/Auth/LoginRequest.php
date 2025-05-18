@@ -50,6 +50,20 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
+
+        $user = Auth::user();
+
+        switch ($user->role) {
+            case 'admin':
+                session()->put('redirect_to', route('admin.dashboard'));
+                break;
+            case 'coach':
+                session()->put('redirect_to', route('coach.dashboard'));
+                break;
+            default:
+                session()->put('redirect_to', route('index'));
+                break;
+        }
     }
 
     /**

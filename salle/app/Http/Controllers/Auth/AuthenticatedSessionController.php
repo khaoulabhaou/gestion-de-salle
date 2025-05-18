@@ -24,11 +24,106 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+            $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
 
-        $request->session()->regenerate();
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
+    }
 
-        return redirect()->intended(route('index', absolute: false));
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
+    $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
+    }
+
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
+            $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
+    }
+
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
+    $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
+    }
+
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
+            $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
+    }
+
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
     }
 
     /**

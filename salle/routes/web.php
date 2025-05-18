@@ -107,15 +107,12 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 // Public Views
 // --------------------------------------------
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', fn() => view('index'))->name('index');
 Route::get('/about', fn () => view('about'));
 Route::get('/classes', fn () => view('classes'));
 Route::get('/schedules', fn () => view('schedules'))->name('schedules');
 Route::get('/trainers', fn () => view('trainers'))->name('trainers');
 Route::get('/contact', fn () => view('contact'))->name('contact');
-// Route::get('/membership', fn() => view('membership'));
-
+Route::get('/admin/dashboard', fn() => view('adminDashboard'))->middleware(['auth', 'admin']);
 // Optional: If using Laravel Breeze or Jetstream
 require __DIR__.'/auth.php';
