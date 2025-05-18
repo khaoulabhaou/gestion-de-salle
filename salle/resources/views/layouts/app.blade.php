@@ -21,7 +21,16 @@
 </head>
 <body class="font-sans antialiased">
     <!-- Header Navigation (from your template) -->
-    @include('layouts.header')
+    @auth
+    @if(auth()->user()->role === 'admin')
+        @include('layouts.headerAdmin')
+    @else
+        @include('layouts.header')
+    @endif
+    @else
+        @include('layouts.header')
+    @endauth
+
 
     <main>
         {{ $slot ?? '' }}
