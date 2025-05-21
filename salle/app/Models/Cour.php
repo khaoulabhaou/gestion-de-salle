@@ -17,7 +17,7 @@ class Cour extends Model
         'titre',
         'description',
         'duree',
-        'prix',
+        'catégorie',
         'statut'
     ];
 
@@ -25,7 +25,7 @@ class Cour extends Model
        return $this->hasMany(Reservation::class);
     }
 
-    public function coaches(){
+    public function coach(){
         return $this->belongsTo(Coache::class);
     }
 

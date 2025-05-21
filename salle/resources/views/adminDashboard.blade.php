@@ -96,13 +96,13 @@
                 </div>
                 <ul class="mt-2">
                     <li>
-                        <a href="#" class="sidebar-item active flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/cours/list-cours') }}" class="sidebar-item active flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-list mr-3"></i>
                             <span>Tous les Cours</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/cours/ajouter') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-plus-circle mr-3"></i>
                             <span>Créer un Cours</span>
                         </a>

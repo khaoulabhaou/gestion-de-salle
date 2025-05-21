@@ -11,7 +11,7 @@
                     <!-- ***** Menu - Début ***** -->
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="">Entraînreurs</a></li>
-                        <li class="scroll-to-section"><a href="">Cours</a></li>
+                        <li class="scroll-to-section"><a href="{{ url('/cours/ajouter') }}">Cours</a></li>
                         <li class="scroll-to-section"><a href="">Horaires</a></li>
                         <li class="scroll-to-section"><a href="">Membres</a></li>
                         <li class="scroll-to-section"><a href="">Messages</a></li>

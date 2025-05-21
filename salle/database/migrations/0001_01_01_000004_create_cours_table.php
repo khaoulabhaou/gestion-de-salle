@@ -12,10 +12,10 @@ class CreateCoursTable extends Migration
         Schema::create('cours', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('duree'); // in minutes
             $table->integer('capacite_max');
-            $table->float('prix');
+            $table->text('catégorie');
             $table->foreignId('coach_id')->constrained('coaches');
             $table->enum('statut', ['PLANIFIE', 'EN_COURS', 'TERMINE', 'ANNULE'])->default('PLANIFIE');
             $table->timestamps();
