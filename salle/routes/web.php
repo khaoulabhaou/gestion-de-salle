@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Cours\AjouterCours;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Cours\Listscontroller;
 
 // --------------------------------------------
 // Guest Routes (register, login, forgot password)
@@ -58,6 +60,7 @@ Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.adminProfile');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
@@ -104,15 +107,35 @@ Route::middleware('auth')->group(function () {
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // --------------------------------------------
-// Public Views
+// Cours Controller
 // --------------------------------------------
+Route::middleware('auth','admin')->group( function() {
+    Route::get('/cours/list-cours', [Listscontroller::class, 'index'])->name('list-cours');
+    Route::get('/cours/ajouter', [AjouterCours::class, 'create'])->name('ajouter-cour');
+    Route::post('/cours/ajouter', [AjouterCours::class, 'store'])->name('cours.store');
+    Route::get('/cours/{id}/edit', [Listscontroller::class, 'edit'])->name('cours.edit');
+    Route::put('/cours/{id}', [Listscontroller::class, 'update'])->name('cours.update');
+    Route::delete('/cours/{id}', [Listscontroller::class, 'destroy'])->name('cours.destroy');
+});
 
-Route::get('/', fn() => view('index'))->name('index');
-Route::get('/about', fn () => view('about'));
-Route::get('/classes', fn () => view('classes'));
-Route::get('/schedules', fn () => view('schedules'))->name('schedules');
-Route::get('/trainers', fn () => view('trainers'))->name('trainers');
-Route::get('/contact', fn () => view('contact'))->name('contact');
-Route::get('/admin/dashboard', fn() => view('adminDashboard'))->middleware(['auth', 'admin']);
+// --------------------------------------------
+// Public Views for User
+// --------------------------------------------
+Route::middleware('auth', 'user')->group(function (){
+    Route::get('/', fn() => view('index'))->name('index');
+    Route::get('/about', fn () => view('about'));
+    Route::get('/classes', fn () => view('classes'));
+    Route::get('/schedules', fn () => view('schedules'))->name('schedules');
+    Route::get('/trainers', fn () => view('trainers'))->name('trainers');
+    Route::get('/contact', fn () => view('contact'))->name('contact');    
+});
+
+// --------------------------------------------
+// Public Views for Admin
+// --------------------------------------------
+Route::middleware('auth','admin')->group(function () {
+    Route::get('/admin/dashboard', fn() => view('adminDashboard'))->name('admin-dashboard');
+});
+
 // Optional: If using Laravel Breeze or Jetstream
 require __DIR__.'/auth.php';
