@@ -5,11 +5,12 @@
     <div class="video-overlay header-text">
     </div>
 </div>
+    <script src="https://cdn.tailwindcss.com"></script>
 <div class="container py-5" style="margin-top: 4rem">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-dark">Cours List</h2>
+        <h2 class="fw-bold text-white">Cours List</h2>
         <a href="{{ url('/cours/ajouter') }}" class="btn text-white" style="background-color: #eb653b;">
-            <i class="fas fa-plus-circle me-1"></i> Add Course
+            <i class="fas fa-plus-circle me-1"></i> Ajouter Cours
         </a>
     </div>
 
@@ -41,7 +42,7 @@
                 @forelse ($courses as $course)
                 <tr>
                     <td>{{ $course->titre }}</td>
-                    <td>{{ $course->catégorie }}</td>
+                    <td>{{ $course->Category->nom}}</td>
                     <td>{{ $course->duree }} min</td>
                     <td>{{ $course->capacite_max }}</td>
                     <td>{{ $course->coach->nom_complet ?? '—' }}</td>
@@ -65,7 +66,7 @@
                             <form action="{{ route('cours.destroy', $course->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button onclick="return confirm('Are you sure?')" class="btn btn-link p-0 text-danger">
+                                <button onclick="return confirm('Es-tu sûr?')" class="btn btn-link p-0 text-danger">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -74,7 +75,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7" class="text-center text-muted">No courses found</td>
+                    <td colspan="7" class="text-center text-muted">Aucun cours trouvé</td>
                 </tr>
                 @endforelse
             </tbody>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\cours\CatégorieController;
 use App\Http\Controllers\Cours\Listscontroller;
 
 // --------------------------------------------
@@ -118,6 +119,19 @@ Route::middleware('auth','admin')->group( function() {
     Route::delete('/cours/{id}', [Listscontroller::class, 'destroy'])->name('cours.destroy');
 });
 
+// --------------------------------------------
+// Catégorie Controller
+// --------------------------------------------
+
+Route::middleware('auth','admin')->group(function() {
+    Route::get('/cours/catégorie/ajouter-catégorie', [CatégorieController::class, 'create'])->name('categorie.catégorie-ajouter');
+    Route::get('/cours/catégorie/catégorie-list', [CatégorieController::class, 'index'])->name('categorie.categorie-list');
+    Route::post('/cours/catégorie/catégorie-list/ajouter-catégorie', [CatégorieController::class, 'store'])->name('categorie.store');
+    Route::get('/cours/catégorie/catégorie-list/catégorie-détails/{id}',[CatégorieController::class, 'show'])->name('categorie-details');
+    Route::delete('/cours/catégorie/catégorie-list/{id}', [CatégorieController::class, 'destroy'])->name('categorie-destroy');
+    Route::get('/cours/catégorie/{id}/edit', [CatégorieController::class, 'edit'])->name('categorie-edit');
+    Route::put('/cours/catégorie/{id}', [CatégorieController::class, 'update'])->name('categorie-update');
+});
 // --------------------------------------------
 // Public Views for User
 // --------------------------------------------

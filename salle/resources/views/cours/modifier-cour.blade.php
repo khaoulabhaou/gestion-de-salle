@@ -53,12 +53,15 @@
                             </div>
                             <div>
                                 <label for="catégorie" class="block text-sm font-medium text-gray-700 mb-1">Catégorie*</label>
-                                <select id="catégorie" name="catégorie" class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition">
+                                <select id="catégorie" name="category_id" class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition">
                                     <option value="">Sélectionner une catégorie</option>
-                                    @foreach (['Fitness Basique','Gym Avancé','Muscu Base','Muscu Avancée','Yoga','Bodybuilding'] as $cat)
-                                        <option value="{{ $cat }}" @if($course->catégorie == $cat) selected @endif>{{ $cat }}</option>
+                                    @foreach ($categories as $categorie)
+                                        <option value="{{ $categorie->id }}" @if($course->category_id == $categorie->id) selected @endif>
+                                            {{ $categorie->nom }}
+                                        </option>
                                     @endforeach
                                 </select>
+
                             </div>
                             <div>
                                 <label for="duree" class="block text-sm font-medium text-gray-700 mb-1">Durée (minutes)*</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cours;
 use App\Models\Cour;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Coache;
 
 class AjouterCours extends Controller
@@ -17,7 +18,7 @@ class AjouterCours extends Controller
             'description' => 'nullable|string',
             'duree' => 'required|integer|min:1|max:90',
             'capacite_max' => 'required|integer|min:1|max:30',
-            'catégorie' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
             'coach_id' => 'required|exists:coaches,id',
             'statut' => 'required|in:PLANIFIE,EN_COURS,TERMINE,ANNULE'
         ], [
@@ -32,7 +33,7 @@ class AjouterCours extends Controller
             'description' => $request->description,
             'duree' => $request->duree,
             'capacite_max' => $request->capacite_max,
-            'catégorie' => $request->catégorie,            
+            'category_id' => $request->category_id,        
             'coach_id' => $request->coach_id,
             'statut' => $request->statut,
         ]);
@@ -42,7 +43,8 @@ class AjouterCours extends Controller
 
     public function create(){
         $coaches = Coache::all();
-        return view('cours.ajouter-cour', compact('coaches'));
+        $categories = Category::all();
+        return view('cours.ajouter-cour', compact('coaches', 'categories'));
     }
 
 }

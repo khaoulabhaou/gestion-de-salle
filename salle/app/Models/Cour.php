@@ -17,7 +17,7 @@ class Cour extends Model
         'titre',
         'description',
         'duree',
-        'catégorie',
+        'category_id',
         'statut'
     ];
 
@@ -27,6 +27,10 @@ class Cour extends Model
 
     public function coach(){
         return $this->belongsTo(Coache::class);
+    }
+
+    public function Category(){
+        return $this->belongsTo(Category::class);
     }
 
     public function plan(){
