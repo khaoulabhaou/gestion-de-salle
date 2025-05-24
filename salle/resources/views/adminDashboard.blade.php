@@ -108,7 +108,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/cours/catégorie/catégorie-list') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-tags mr-3"></i>
                             <span>Catégories</span>
                         </a>
@@ -205,7 +205,7 @@
             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                 <h3 class="text-lg font-medium text-gray-800 mb-4">Actions Rapides</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+                    <button href="" class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors">
                         <i class="fas fa-user-plus text-blue-500 mr-2"></i>
                         <span>Ajouter Membre</span>
                     </button>
@@ -214,8 +214,10 @@
                         <span>Ajouter Entraîneur</span>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+                    <a href="{{ route('ajouter-cour') }}" class="text-black">
                         <i class="fas fa-book-medical text-purple-500 mr-2"></i>
                         <span>Créer Cours</span>
+                    </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-green-50 hover:border-green-200 transition-colors">
                         <i class="fas fa-calendar-plus text-yellow-500 mr-2"></i>

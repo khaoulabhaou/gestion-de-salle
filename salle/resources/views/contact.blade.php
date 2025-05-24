@@ -71,7 +71,7 @@
                 <div class="p-4 rounded bg-white shadow-sm">
                     <i class="fas fa-map-marker-alt fa-2x text-secondary mb-3"></i>
                     <h5>Adresse</h5>
-                    <p>Lâayoune, Quartier Elwifaq</p>
+                    <p>Laâyoune, Quartier Elwifaq</p>
                 </div>
             </div>
             <div class="col-md-4">

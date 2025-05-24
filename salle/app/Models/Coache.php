@@ -20,4 +20,8 @@ class Coache extends Model
     public function Cours(){
         return $this->hasMany(Cour::class);
     }
+
+    public function Category(){
+        return $this->belongsTo(Category::class);
+    }
 }

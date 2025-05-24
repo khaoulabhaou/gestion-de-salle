@@ -60,6 +60,9 @@ class LoginRequest extends FormRequest
             case 'coach':
                 session()->put('redirect_to', route('coach.dashboard'));
                 break;
+            case 'user':
+                session()->put('redirect_to', route('user.dashboard'));
+                break;
             default:
                 session()->put('redirect_to', route('index'));
                 break;

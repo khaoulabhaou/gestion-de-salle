@@ -62,16 +62,13 @@
                                 </div>
                                 <!-- Categorie -->
                                 <div>
-                                <label for="catégorie" class="block text-sm font-medium text-gray-700 mb-1">Catégorie*</label>
-                                <select id="catégorie" name="catégorie" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition">
-                                    <option value="">Sélectionner une catégorie</option>
-                                    <option value="Fitness Basique">Programme Fitness Basique</option>
-                                    <option value="Gym Avancé">Programme de Gym Avancé</option>
-                                    <option value="Muscu Base">Cours de Musculation de Base</option>
-                                    <option value="Muscu Avancée">Cours de Musculation Avancée</option>
-                                    <option value="Yoga">Programme de Yoga</option>
-                                    <option value="Bodybuilding">Programme de Bodybuilding</option>
-                                </select>
+                                <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Catégorie*</label>
+                                    <select id="category_id" name="category_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition">
+                                        <option value="">Choisir une catégorie</option>
+                                        @foreach ($categories as $categorie)
+                                            <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <!-- Duration -->
                                 <div>
@@ -132,7 +129,7 @@
                         <!-- Form Actions -->
                         <div class="flex flex-col-reverse md:flex-row justify-end space-y-4 md:space-y-0 space-x-0 md:space-x-3">
                             <button type="reset" class="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition flex items-center justify-center">
-                                <i class="fas fa-redo mr-2"></i>Reset
+                                <i class="fas fa-redo mr-2"></i>Remettre
                             </button>
                             <button type="submit" class="gradient-bg text-white px-6 py-2.5 rounded-lg hover:opacity-90 transition flex items-center justify-center shadow-md">
                                 <i class="fas fa-plus-circle mr-2"></i>Ajouter 
