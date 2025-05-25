@@ -68,13 +68,13 @@
                 </div>
                 <ul class="mt-2">
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/coache/coache-list') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-list mr-3"></i>
                             <span>Liste des Entraîneurs</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/coache/ajouter-coache') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-user-plus mr-3"></i>
                             <span>Recruter Entraîneur</span>
                         </a>
@@ -210,8 +210,10 @@
                         <span>Ajouter Membre</span>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-yellow-50 hover:border-yellow-200 transition-colors">
+                    <a class="text-black" href="{{ route('coache.create') }}">
                         <i class="fas fa-user-plus text-green-500 mr-2"></i>
                         <span>Ajouter Entraîneur</span>
+                    </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-purple-50 hover:border-purple-200 transition-colors">
                     <a href="{{ route('ajouter-cour') }}" class="text-black">

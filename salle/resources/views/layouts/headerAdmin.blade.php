@@ -10,8 +10,8 @@
 
                     <!-- ***** Menu - Début ***** -->
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="">Entraînreurs</a></li>
-                        <li class="scroll-to-section"><a href="{{ url('/cours/catégorie/catégorie-list') }}">Cours</a></li>
+                        <li class="scroll-to-section"><a href="{{ url('/coache/coache-list') }}">Entraînreurs</a></li>
+                        <li class="scroll-to-section"><a href="{{ url('/cours/list-cours') }}">Cours</a></li>
                         <li class="scroll-to-section"><a href="">Horaires</a></li>
                         <li class="scroll-to-section"><a href="">Membres</a></li>
                         <li class="scroll-to-section"><a href="">Messages</a></li>

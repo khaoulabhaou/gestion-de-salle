@@ -41,7 +41,7 @@ class Listscontroller extends Controller
 
     public function edit($id){
         $course = Cour::findOrFail($id);
-        $coaches = Coache::all( );
+        $coaches = Coache::all();
         $categories = Category::all();
         return view('cours.modifier-cour', compact('course', 'coaches', 'categories'));
     }

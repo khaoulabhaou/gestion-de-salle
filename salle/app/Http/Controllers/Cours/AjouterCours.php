@@ -11,8 +11,6 @@ use App\Models\Coache;
 class AjouterCours extends Controller
 {
     public function store(Request $request){
-
-        // dd($request->all());
         $request -> validate([
             'titre' => 'required|string|max:255|unique:cours,titre',
             'description' => 'nullable|string',

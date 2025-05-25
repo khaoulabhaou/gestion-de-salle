@@ -7,7 +7,10 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cours\AjouterCours;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\Cours\Listscontroller;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\coache\CoacheController;
+use App\Http\Controllers\cours\CatégorieController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -15,13 +18,10 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\cours\CatégorieController;
-use App\Http\Controllers\Cours\Listscontroller;
 
 // --------------------------------------------
 // Guest Routes (register, login, forgot password)
 // --------------------------------------------
-
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -46,7 +46,6 @@ Route::middleware('guest')->group(function () {
 // --------------------------------------------
 // Email Verification
 // --------------------------------------------
-
 Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
     ->middleware(['auth', 'throttle:6,1'])
     ->name('verification.send');
@@ -58,7 +57,6 @@ Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
 // --------------------------------------------
 // Profile
 // --------------------------------------------
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.adminProfile');
@@ -68,7 +66,6 @@ Route::middleware(['auth'])->group(function () {
 // --------------------------------------------
 // Password Confirmation & Update (for logged-in users)
 // --------------------------------------------
-
 Route::middleware('auth')->group(function () {
     Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
     Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
@@ -79,9 +76,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // --------------------------------------------
-// Membership and controller
+// Membership Routes
 // --------------------------------------------
-
 Route::middleware('auth')->group(function () {
     Route::get('/membership', [MembershipController::class, 'index'])->name('membership');
     Route::get('cancel-membership', [MembershipController::class, 'cancelMembership'])->name('membership.cancel');
@@ -93,22 +89,20 @@ Route::middleware('auth')->group(function () {
 });
 
 // --------------------------------------------
-// Payment controller
+// Payment Routes
 // --------------------------------------------
-
 Route::middleware('auth')->group(function () {
     Route::get('/payment/{membership}', [PaymentController::class, 'show'])->name('payment.show');
     Route::post('/payment/{membership}/process', [PaymentController::class, 'processPayment'])->name('payment.process');
 });
 
 // -------------------------------------------
-// Contact Controller
+// Contact Routes
 // -------------------------------------------
-
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // --------------------------------------------
-// Cours Controller
+// Cours Routes
 // --------------------------------------------
 Route::middleware('auth','admin')->group( function() {
     Route::get('/cours/list-cours', [Listscontroller::class, 'index'])->name('list-cours');
@@ -120,9 +114,8 @@ Route::middleware('auth','admin')->group( function() {
 });
 
 // --------------------------------------------
-// Catégorie Controller
+// Catégorie Routes
 // --------------------------------------------
-
 Route::middleware('auth','admin')->group(function() {
     Route::get('/cours/catégorie/ajouter-catégorie', [CatégorieController::class, 'create'])->name('categorie.catégorie-ajouter');
     Route::get('/cours/catégorie/catégorie-list', [CatégorieController::class, 'index'])->name('categorie.categorie-list');
@@ -132,6 +125,19 @@ Route::middleware('auth','admin')->group(function() {
     Route::get('/cours/catégorie/{id}/edit', [CatégorieController::class, 'edit'])->name('categorie-edit');
     Route::put('/cours/catégorie/{id}', [CatégorieController::class, 'update'])->name('categorie-update');
 });
+
+// --------------------------------------------
+// Entraîneurs Routes
+// --------------------------------------------
+Route::middleware('auth', 'admin')->group(function() {
+    Route::get('/coache/ajouter-coache', [CoacheController::class, 'create'])->name('coache.create');
+    Route::post('/coache/ajouter-coache', [CoacheController::class, 'store'])->name('coache.store');
+    Route::get('/coache/coache-list', [CoacheController::class, 'index'])->name('coache.index');
+    Route::get('/coache/{id}/edit',[CoacheController::class, 'edit'])->name('coache.edit');
+    Route::put('/coache/{id}',[CoacheController::class, 'update'])->name('coache.update');
+    Route::delete('/coache/coache-destroy/{id}',[CoacheController::class, 'destroy'])->name('coache.destroy');
+});
+
 // --------------------------------------------
 // Public Views for User
 // --------------------------------------------

@@ -14,14 +14,14 @@ class Coache extends Model
     protected $fillable = [
         'nom_complet',
         'email',
-        'specialite'
+        'categorie'
     ];
 
     public function Cours(){
         return $this->hasMany(Cour::class);
     }
 
-    public function Category(){
-        return $this->belongsTo(Category::class);
+    public function category(){
+        return $this->belongsTo(Category::class, 'categorie');
     }
 }
