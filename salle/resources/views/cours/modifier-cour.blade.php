@@ -61,7 +61,6 @@
                                         </option>
                                     @endforeach
                                 </select>
-
                             </div>
                             <div>
                                 <label for="duree" class="block text-sm font-medium text-gray-700 mb-1">Durée (minutes)*</label>

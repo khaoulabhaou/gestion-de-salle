@@ -23,9 +23,14 @@
         </div>
     </div>
 
-    <div class="mt-5">
-        <input type="text" class="form-control" placeholder="🔍 Rechercher..." id="searchInput">
-    </div>
+    <form method="GET" class="mb-4 mt-4">
+        <div class="input-group">
+            <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Search courses...">
+            <button class="btn text-white" type="submit" style="background-color: #eb653b;">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
 
     <table class="table table-hover table-bordered table-stripped mt-5">
         <thead>
