@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\member\MemberController;
 
 // --------------------------------------------
 // Guest Routes (register, login, forgot password)
@@ -138,6 +139,12 @@ Route::middleware('auth', 'admin')->group(function() {
     Route::delete('/coache/coache-destroy/{id}',[CoacheController::class, 'destroy'])->name('coache.destroy');
 });
 
+// --------------------------------------------
+// Membres Routes
+// --------------------------------------------
+Route::middleware('auth', 'admin')->group(function() {
+    Route::get('/membres/ajouter-membre', [MemberController::class, 'create'])->name('member.create');
+});
 // --------------------------------------------
 // Public Views for User
 // --------------------------------------------

@@ -29,18 +29,16 @@
         }
     </style>
 <body>
-    <div class="min-h-screen bg-gray-50 mt-5">
+    <div class="min-h-screen bg-gray-50" style="margin-top: 5rem">
         <!-- Main Content -->
         <main class="container mx-auto px-4 py-8 animate-fade-in">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
                 <div>
                     <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Modifier un entraînreur</h1>
                 </div>
-                <div class="mt-4 md:mt-0 flex space-x-3">
-                    <a href="{{url('/admin/dashboard') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center">
+                    <a href="{{url('/coache/coache-list') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center">
                         <i class="fas fa-arrow-left mr-2"></i> Retour
                     </a>
-                </div>
             </div>
 
             <!-- Form Card -->
