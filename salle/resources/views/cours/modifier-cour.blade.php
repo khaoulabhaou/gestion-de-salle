@@ -33,7 +33,7 @@
     <main class="container mx-auto px-4 py-8 animate-fade-in">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Modifier le cours</h1>
-            <a href="{{ url('/admin/dashboard') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center mt-4 md:mt-0">
+            <a href="{{ url('/cours/list-cours') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center mt-4 md:mt-0">
                 <i class="fas fa-arrow-left mr-2"></i> Retour
             </a>
         </div>

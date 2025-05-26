@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/membres/ajouter-membre') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-plus-circle mr-3"></i>
                             <span>Ajouter Nouveau</span>
                         </a>

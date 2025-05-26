@@ -7,11 +7,24 @@
 </div>
     <script src="https://cdn.tailwindcss.com"></script>
 <div class="container py-5" style="margin-top: 4rem">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-white">Cours List</h2>
-        <a href="{{ url('/coache/ajouter-coache') }}" class="btn text-white" style="background-color: #eb653b;">
-            <i class="fas fa-plus-circle me-1"></i> Ajouter Entraîneur
-        </a>
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">List des Entraînreurs</h1>
+        </div>
+        <div class="col-md-auto text-end">
+            <a href="{{ url('/coache/ajouter-coache') }}" class="btn text-white" style="background-color: #eb653b;" id="addbtn">
+            <style>
+                #addbtn:hover {
+                    background-color: #cf502a !important;
+                }
+            </style>
+                <i class="fas fa-plus-circle me-1"></i> Ajouter Entraîneur
+            </a>                    
+            <a href="{{ url('/admin/dashboard') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i> Retour
+            </a>
+        </div>
     </div>
 
     {{-- Search Bar --}}
