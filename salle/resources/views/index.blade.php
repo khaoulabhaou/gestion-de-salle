@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{-- @section('content') --}}
 @php
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
@@ -159,4 +160,5 @@
             </div>
         </div>
 </section>
+@endsection
 <!-- ***** Appel à l'action - Fin ***** -->

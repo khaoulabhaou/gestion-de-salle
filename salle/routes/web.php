@@ -26,15 +26,11 @@ use App\Http\Controllers\member\MemberController;
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('/register', [RegisteredUserController::class, 'store']);
-
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-
     Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
     Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
-    
     Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
-
     Route::post('/logout', function () {
         Auth::logout();
         request()->session()->invalidate();
@@ -79,7 +75,7 @@ Route::middleware('auth')->group(function () {
 // --------------------------------------------
 // Membership Routes
 // --------------------------------------------
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'user')->group(function () {
     Route::get('/membership', [MembershipController::class, 'index'])->name('membership');
     Route::get('cancel-membership', [MembershipController::class, 'cancelMembership'])->name('membership.cancel');
     Route::post('cancel-membership', [MembershipController::class, 'cancelMembershipSubmit'])->name('membership.cancel.submit');
@@ -143,7 +139,10 @@ Route::middleware('auth', 'admin')->group(function() {
 // Membres Routes
 // --------------------------------------------
 Route::middleware('auth', 'admin')->group(function() {
-    Route::get('/membres/ajouter-membre', [MemberController::class, 'create'])->name('member.create');
+    Route::get('/membres/list-membre', [MemberController::class, 'index'])->name('list-membre');
+    Route::get('/membres/{id}/modifier', [MemberController::class, 'edit'])->name('membre-edit');
+    Route::put('/membres/{id}', [MemberController::class, 'update'])->name('membre-update');
+    Route::delete('/membres/{id}/supprimer', [MemberController::class, 'destroy'])->name('membre-destroy');
 });
 // --------------------------------------------
 // Public Views for User

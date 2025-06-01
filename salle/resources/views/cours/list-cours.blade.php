@@ -50,7 +50,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($courses as $course)
+            @forelse ($courses as $course)
                 <tr>
                     <td>{{ $course->titre }}</td>
                     <td>{{ $course->category->nom ?? '-'}}</td>
@@ -88,7 +88,7 @@
                 <tr>
                     <td colspan="7" class="text-center text-muted">Aucun cours trouvé</td>
                 </tr>
-                @endforelse
+            @endforelse
             </tbody>
         </table>
     </div>

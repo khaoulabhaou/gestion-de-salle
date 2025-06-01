@@ -32,7 +32,6 @@
         @include('layouts.header')
     @endauth
 
-
     <main>
         {{ $slot ?? '' }}
         @yield('content')

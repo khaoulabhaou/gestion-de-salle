@@ -13,6 +13,6 @@ class UserOnly
             return $next($request);
         }
 
-        abort(500); // or redirect()->route('home')
+        abort(500);
     }
 }
