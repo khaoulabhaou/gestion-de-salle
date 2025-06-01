@@ -20,8 +20,8 @@ class CoacheController extends Controller
     public function index(Request $request){
 
         $coaches = Coache::all();
+        
         $search = $request->input('search');
-    
         $coaches = Coache::with(['category'])
             ->where(function ($query) use ($search) {
                 $query->where('nom_complet', 'like', "%$search%")

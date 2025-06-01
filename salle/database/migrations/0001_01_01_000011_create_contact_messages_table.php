@@ -24,7 +24,6 @@ public function up()
     });
 }
 
-
 public function down()
 {
     Schema::dropIfExists('contact_messages');

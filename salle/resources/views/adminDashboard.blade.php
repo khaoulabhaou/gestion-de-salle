@@ -40,17 +40,17 @@
                 </div>
                 <ul class="mt-2">
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ route('list-membre') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-list mr-3"></i>
                             <span>Tous les Membres</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ url('/membres/ajouter-membre') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-plus-circle mr-3"></i>
                             <span>Ajouter Nouveau</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-chart-bar mr-3"></i>
@@ -205,25 +205,29 @@
             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                 <h3 class="text-lg font-medium text-gray-800 mb-4">Actions Rapides</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <button href="" class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors">
-                        <i class="fas fa-user-plus text-blue-500 mr-2"></i>
-                        <span>Ajouter Membre</span>
+                    <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors">
+                    <a href="{{ route('list-membre') }}" class="link-item">
+                        <i class="fas fa-user text-blue-500 mr-2"></i>
+                        <span>List Membres</span>
+                    </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-yellow-50 hover:border-yellow-200 transition-colors">
-                    <a class="text-black" href="{{ route('coache.create') }}">
+                    <a class="link-item" href="{{ route('coache.create') }}">
                         <i class="fas fa-user-plus text-green-500 mr-2"></i>
                         <span>Ajouter Entraîneur</span>
                     </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-purple-50 hover:border-purple-200 transition-colors">
-                    <a href="{{ route('ajouter-cour') }}" class="text-black">
+                    <a href="{{ route('ajouter-cour') }}" class="link-item">
                         <i class="fas fa-book-medical text-purple-500 mr-2"></i>
                         <span>Créer Cours</span>
                     </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-green-50 hover:border-green-200 transition-colors">
+                    <a href="" class="link-item">
                         <i class="fas fa-calendar-plus text-yellow-500 mr-2"></i>
                         <span>Planifier Séance</span>
+                    </a>
                     </button>
                 </div>
             </div>

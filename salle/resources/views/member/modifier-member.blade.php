@@ -34,7 +34,7 @@
         <main class="container mx-auto px-4 py-8 animate-fade-in">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
                 <div>
-                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Ajouter un nouveau cours</h1>
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Ajouter un nouveau membre</h1>
                 </div>
                 <div class="mt-4 md:mt-0 flex space-x-3">
                     <a href="{{url('/admin/dashboard') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center">
@@ -46,93 +46,53 @@
             <!-- Form Card -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden">
                 <div class="p-6 md:p-8">
-                    <form id="courseForm" method="POST" action="{{ route('cours.store') }}" class="space-y-6">
+                    <form id="courseForm" method="POST" action="{{ route('membre-update', $members->id) }}" class="space-y-6">
                         @csrf
+                        @method('PUT')
                         <!-- Basic Information Section -->
                         <div>
-                            <h2 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Informations De Cours</h2>
+                            <h2 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Informations De Membre</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Title -->
+                                <!-- Nom Complet -->
                                 <div>
-                                    <label for="titre" class="block text-sm font-medium text-gray-700 mb-1">Titre De Cours*</label>
-                                    <input type="text" id="titre" name="titre" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition form-control @error('titre') is-invalid @enderror" value="{{ old('titre') }}">
-                                    @error('titre')
+                                    <label for="nom_complet" class="block text-sm font-medium text-gray-700 mb-1">Nom Complet De Membre*</label>
+                                    <input type="text" id="nom_complet" name="nom_complet" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition form-control @error('nom_complet') is-invalid @enderror" value="{{ old('nom_complet', $members->nom_complet) }}">
+                                    @error('nom_complet')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <!-- Categorie -->
+                                <!-- email -->
                                 <div>
-                                <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Catégorie*</label>
-                                    <select id="category_id" name="category_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition">
-                                        <option value="">Choisir une catégorie</option>
-                                        @foreach ($categories as $categorie)
-                                            <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <!-- Duration -->
-                                <div>
-                                    <label for="duree" class="block text-sm font-medium text-gray-700 mb-1">Duration (minutes)*</label>
-                                    <input type="number" id="duree" name="duree" required min="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition form-control @error('duree') is-invalid @enderror" value="{{ old('duree') }}">
-                                    @error('duree')
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail*</label>
+                                    <input type="email" id="email" name="email" value="{{ old('email', $members->email) }}" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition form-control @error('email') is-invalid @enderror">
+                                    @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <!-- Max Capacity -->
+                                <!-- Membership -->
                                 <div>
-                                    <label for="capacite_max" class="block text-sm font-medium text-gray-700 mb-1">Capacité Max*</label>
-                                    <input type="number" id="capacite_max" name="capacite_max" required min="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition form-control @error('capacite_max') is-invalid @enderror">
-                                    @error('capacite_max')
-                                        <div class="invalid-feedback">{{$message}}</div>
-                                    @enderror
-                                </div>
-                                <!-- Coach -->
-                                <div>
-                                    <label for="coach_id" class="block text-sm font-medium text-gray-700 mb-1">Entraînreur*</label>
-                                    <select id="coach_id" name="coach_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition">
-                                        <option value="">Sélectionner un entraînreur</option>
-                                        @foreach ($coaches as $coach)
-                                            <option class="text-black" value="{{ $coach->id }}">{{ $coach->nom_complet }}</option>
+                                    <label for="membership_id" class="block text-sm font-medium text-gray-700 mb-1">Membership*</label>
+                                    <select id="membership_id" name="membership_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-control focus:border-indigo-500 transition">
+                                        <option value="">Sélectionner une abbonnement</option>
+                                        @foreach ($memberships as $membership)
+                                            <option class="text-black" value="{{ $membership->id }}" @if($members->membership_id == $membership->id) selected @endif>{{$membership->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Description Section -->
-                        <div>
-                            <h2 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Details De Cours</h2>
-                            <div class="grid grid-cols-1 gap-6">
+                                <!-- Date d'Éxpiration -->
                                 <div>
-                                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                    <textarea id="description" name="description" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition"></textarea>
+                                    <label for="expiration_date" class="block text-sm font-medium text-gray-700 mb-1">Date d'Éxpiration</label>
+                                    <input type="date" id="expiration_date" value="{{ old('expiration_date', $members->expiration_date) }}" name="expiration_date" class="w-full px-4 py-2 border border-gray-300 rounded-lg form-control focus:border-indigo-500 transition">
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Additional Information Section -->
-                        <div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Status -->
-                                <div>
-                                    <label for="statut" class="block text-sm font-medium text-gray-700 mb-1">Status*</label>
-                                    <select id="statut" name="statut" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition">
-                                        <option value="PLANIFIE">Planifié</option>
-                                        <option value="EN_COURS">En cours</option>
-                                        <option value="TERMINE">Terminé</option>
-                                        <option value="ANNULE">Annulé</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Form Actions -->
                         <div class="flex flex-col-reverse md:flex-row justify-end space-y-4 md:space-y-0 space-x-0 md:space-x-3">
                             <button type="reset" class="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition flex items-center justify-center">
                                 <i class="fas fa-redo mr-2"></i>Remettre
                             </button>
                             <button type="submit" class="gradient-bg text-white px-6 py-2.5 rounded-lg hover:opacity-90 transition flex items-center justify-center shadow-md">
-                                <i class="fas fa-plus-circle mr-2"></i>Ajouter 
+                                <i class="fas fa-plus-circle mr-2"></i>Modifier 
                             </button>
                         </div>
                     </form>
