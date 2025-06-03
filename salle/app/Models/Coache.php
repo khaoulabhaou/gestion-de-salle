@@ -17,11 +17,13 @@ class Coache extends Model
         'categorie'
     ];
 
+    public function category(){
+        return $this->belongsTo(Category::class, 'categorie');
+    }
+    
     public function Cours(){
         return $this->hasMany(Cour::class);
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class, 'categorie');
-    }
+
 }

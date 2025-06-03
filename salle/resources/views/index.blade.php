@@ -160,5 +160,4 @@
             </div>
         </div>
 </section>
-@endsection
 <!-- ***** Appel à l'action - Fin ***** -->

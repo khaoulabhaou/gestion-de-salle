@@ -6,19 +6,20 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cours\AjouterCours;
-use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\Cours\Listscontroller;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\coache\CoacheController;
+use App\Http\Controllers\member\MemberController;
 use App\Http\Controllers\cours\CatégorieController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\membership\MembershipController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\member\MemberController;
+use App\Http\Controllers\membership\MembershipAdminController;
 
 // --------------------------------------------
 // Guest Routes (register, login, forgot password)
@@ -73,7 +74,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // --------------------------------------------
-// Membership Routes
+// Membership user Routes
 // --------------------------------------------
 Route::middleware('auth', 'user')->group(function () {
     Route::get('/membership', [MembershipController::class, 'index'])->name('membership');
@@ -83,6 +84,19 @@ Route::middleware('auth', 'user')->group(function () {
     Route::post('upgrade-membership', [MembershipController::class, 'upgradeMembershipSubmit'])->name('membership.upgrade.submit');
     Route::post('subscribe', [MembershipController::class, 'subscribe'])->name('membership.subscribe');
     Route::get('/membership/info', [MembershipController::class, 'showMembershipInfo'])->name('membership.info');
+});
+
+// -------------------------------------------
+// Membership admin routes
+// -------------------------------------------
+Route::middleware('auth', 'admin')->group(function() {
+    Route::get('/membership/list-membership',[MembershipAdminController::class, 'index'])->name('list-membership');
+    Route::get('/membership/create-membership', [MembershipAdminController::class, 'create'])->name('create-membership');
+    Route::post('/membership/store-membership', [MembershipAdminController::class, 'store'])->name('membership.store');
+    Route::delete('/membership/{id}/delete-membership', [MembershipAdminController::class, 'destroy'])->name('membership.destroy');
+    Route::put('/membership/{id}/update-membership', [MembershipAdminController::class, 'update'])->name('membership.update');
+    Route::get('/membership/{id}/edit-membership', [MembershipAdminController::class, 'edit'])->name('membership.edit');
+
 });
 
 // --------------------------------------------
@@ -108,6 +122,7 @@ Route::middleware('auth','admin')->group( function() {
     Route::get('/cours/{id}/edit', [Listscontroller::class, 'edit'])->name('cours.edit');
     Route::put('/cours/{id}', [Listscontroller::class, 'update'])->name('cours.update');
     Route::delete('/cours/{id}', [Listscontroller::class, 'destroy'])->name('cours.destroy');
+    
 });
 
 // --------------------------------------------

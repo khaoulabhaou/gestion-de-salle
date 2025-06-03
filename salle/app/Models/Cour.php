@@ -21,16 +21,16 @@ class Cour extends Model
         'statut'
     ];
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    
     public function reservations(){
        return $this->hasMany(Reservation::class);
     }
 
     public function coach(){
         return $this->belongsTo(Coache::class);
-    }
-
-    public function category(){
-        return $this->belongsTo(Category::class);
     }
 
     public function plan(){

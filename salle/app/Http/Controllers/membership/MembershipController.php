@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\membership;
 
-use App\Models\Cour;
 use Carbon\Carbon;
 use App\Models\Member;
-use App\Models\Paiement;
 use App\Models\Membership;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class MembershipController extends Controller
