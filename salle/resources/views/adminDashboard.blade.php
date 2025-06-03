@@ -51,12 +51,12 @@
                             <span>Ajouter Nouveau</span>
                         </a>
                     </li> --}}
-                    <li>
+                    {{-- <li>
                         <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-chart-bar mr-3"></i>
                             <span>Statistiques</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
 
@@ -79,12 +79,12 @@
                             <span>Recruter Entraîneur</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-calendar-check mr-3"></i>
                             <span>Disponibilité</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
 
@@ -116,8 +116,29 @@
                 </ul>
             </div>
 
-            <!-- Planning -->
+            <!-- Memberships -->
             <div class="pl-4 mb-4">
+                <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
+                    <i class="fa-solid fa-address-card mr-2"></i>
+                    <span>Abonnements</span>
+                </div>
+                <ul class="mt-2">
+                    <li>
+                        <a href="{{ url('/membership/list-membership') }}" class="sidebar-item active flex items-center px-4 py-2 text-gray-700 rounded-md">
+                            <i class="fas fa-list mr-3"></i>
+                            <span>Tous les Abonnements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/membership/create-membership') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                            <i class="fas fa-plus-circle mr-3"></i>
+                            <span>Créer un Abonnement</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Planning -->
+            {{-- <div class="pl-4 mb-4">
                 <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
                     <i class="fas fa-calendar-alt mr-2"></i>
                     <span>Planning</span>
@@ -142,7 +163,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
         </nav>
     </aside>
 
