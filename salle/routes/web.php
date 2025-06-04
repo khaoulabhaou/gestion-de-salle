@@ -2,24 +2,26 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cours\AjouterCours;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Cours\Listscontroller;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\coache\CoacheController;
 use App\Http\Controllers\member\MemberController;
+use App\Http\Controllers\contact\ContactController;
 use App\Http\Controllers\cours\CatégorieController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\membership\MembershipController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\contact\ContactMessageController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\membership\MembershipAdminController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 
 // --------------------------------------------
 // Guest Routes (register, login, forgot password)
@@ -100,6 +102,13 @@ Route::middleware('auth', 'admin')->group(function() {
 });
 
 // --------------------------------------------
+// Cours Routes for User
+// --------------------------------------------
+Route::middleware('auth', 'user')->group(function(){
+    Route::get('/classes', [CatégorieController::class, 'indexCour']);
+});
+
+// --------------------------------------------
 // Payment Routes
 // --------------------------------------------
 Route::middleware('auth')->group(function () {
@@ -110,7 +119,16 @@ Route::middleware('auth')->group(function () {
 // -------------------------------------------
 // Contact Routes
 // -------------------------------------------
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/messages', [ContactMessageController::class, 'index'])->name('admin.messages.index');
+    Route::get('/messages/{id}/respond', [ContactMessageController::class, 'respondForm'])->name('admin.messages.respond');
+    Route::post('/messages/{id}/respond', [ContactMessageController::class, 'sendResponse'])->name('admin.messages.send');
+    Route::delete('/messages/{id}', [ContactMessageController::class, 'destroy'])->name('admin.messages.delete');
+});
+
+Route::middleware('auth', 'user')->group(function(){
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+});
 
 // --------------------------------------------
 // Cours Routes
@@ -165,7 +183,6 @@ Route::middleware('auth', 'admin')->group(function() {
 Route::middleware('auth', 'user')->group(function (){
     Route::get('/', fn() => view('index'))->name('index');
     Route::get('/about', fn () => view('about'));
-    Route::get('/classes', fn () => view('classes'));
     Route::get('/schedules', fn () => view('schedules'))->name('schedules');
     Route::get('/trainers', fn () => view('trainers'))->name('trainers');
     Route::get('/contact', fn () => view('contact'))->name('contact');    
@@ -175,7 +192,9 @@ Route::middleware('auth', 'user')->group(function (){
 // Public Views for Admin
 // --------------------------------------------
 Route::middleware('auth','admin')->group(function () {
-    Route::get('/admin/dashboard', fn() => view('adminDashboard'))->name('admin-dashboard');
+    // Route::get('/admin/dashboard', fn() => view('adminDashboard'))->name('admin-dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
+
 });
 
 // Optional: If using Laravel Breeze or Jetstream

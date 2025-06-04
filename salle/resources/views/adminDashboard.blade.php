@@ -137,6 +137,20 @@
                     </li>
                 </ul>
             </div>
+            <div class="pl-4 mb-4">
+                <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
+                    <i class="fa-solid fa-envelope mr-2"></i>
+                    <span>Messages</span>
+                </div>
+                <ul class="mt-2">
+                    <li>
+                        <a href="{{ url('/admin/messages') }}" class="sidebar-item active flex items-center px-4 py-2 text-gray-700 rounded-md">
+                            <i class="fas fa-list mr-3"></i>
+                            <span>Tous les messages</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <!-- Planning -->
             {{-- <div class="pl-4 mb-4">
                 <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
@@ -171,7 +185,7 @@
     <main class="flex-1 overflow-auto p-6">
         <div class="bg-white rounded-lg shadow p-6">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Aperçu du Tableau</h2>
-
+    
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
                     <div class="flex items-center">
@@ -180,23 +194,23 @@
                         </div>
                         <div class="ml-4">
                             <p class="text-sm font-medium text-gray-500">Total Membres</p>
-                            <p class="text-2xl font-bold text-gray-800">1,254</p>
+                            <p class="text-2xl font-bold text-gray-800">{{ $totalMembres }}</p>
                         </div>
                     </div>
                 </div>
-
+    
                 <div class="bg-green-50 p-6 rounded-lg border border-green-100">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-green-100 text-green-600">
                             <i class="fas fa-user-tie text-xl"></i>
                         </div>
                         <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-500">Entraîneurs Actifs</p>
-                            <p class="text-2xl font-bold text-gray-800">24</p>
+                            <p class="text-sm font-medium text-gray-500">Total d'Entraîneurs</p>
+                            <p class="text-2xl font-bold text-gray-800">{{ $totalCoaches }}</p>
                         </div>
                     </div>
                 </div>
-
+    
                 <div class="bg-purple-50 p-6 rounded-lg border border-purple-100">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-purple-100 text-purple-600">
@@ -204,54 +218,55 @@
                         </div>
                         <div class="ml-4">
                             <p class="text-sm font-medium text-gray-500">Cours</p>
-                            <p class="text-2xl font-bold text-gray-800">56</p>
+                            <p class="text-2xl font-bold text-gray-800">{{ $totalCours }}</p>
                         </div>
                     </div>
                 </div>
-
+    
                 <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
                             <i class="fas fa-calendar-check text-xl"></i>
                         </div>
                         <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-500">Séances Aujourd'hui</p>
-                            <p class="text-2xl font-bold text-gray-800">18</p>
+                            <p class="text-sm font-medium text-gray-500">Les Abonnements</p>
+                            <p class="text-2xl font-bold text-gray-800">{{ $totalAbonnements }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-
+    
             <!-- Quick Actions -->
             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                 <h3 class="text-lg font-medium text-gray-800 mb-4">Actions Rapides</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors">
-                    <a href="{{ route('list-membre') }}" class="link-item">
-                        <i class="fas fa-user text-blue-500 mr-2"></i>
-                        <span>List Membres</span>
-                    </a>
+                        <a href="{{ route('list-membre') }}" class="link-item">
+                            <i class="fas fa-user text-blue-500 mr-2"></i>
+                            <span>List Membres</span>
+                        </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-yellow-50 hover:border-yellow-200 transition-colors">
-                    <a class="link-item" href="{{ route('coache.create') }}">
-                        <i class="fas fa-user-plus text-green-500 mr-2"></i>
-                        <span>Ajouter Entraîneur</span>
-                    </a>
+                        <a class="link-item" href="{{ route('coache.create') }}">
+                            <i class="fas fa-user-plus text-green-500 mr-2"></i>
+                            <span>Ajouter Entraîneur</span>
+                        </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-purple-50 hover:border-purple-200 transition-colors">
-                    <a href="{{ route('ajouter-cour') }}" class="link-item">
-                        <i class="fas fa-book-medical text-purple-500 mr-2"></i>
-                        <span>Créer Cours</span>
-                    </a>
+                        <a href="{{ route('ajouter-cour') }}" class="link-item">
+                            <i class="fas fa-book-medical text-purple-500 mr-2"></i>
+                            <span>Créer Cours</span>
+                        </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-green-50 hover:border-green-200 transition-colors">
-                    <a href="" class="link-item">
-                        <i class="fas fa-calendar-plus text-yellow-500 mr-2"></i>
-                        <span>Planifier Séance</span>
-                    </a>
+                        <a href="{{ url('/membership/create-membership') }}" class="link-item">
+                            <i class="fas fa-calendar-plus text-yellow-500 mr-2"></i>
+                            <span>Planifier Séance</span>
+                        </a>
                     </button>
                 </div>
             </div>
         </div>
     </main>
+
 </div>

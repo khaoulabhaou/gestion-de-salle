@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\member;
 
 use App\Models\Member;
-use App\Models\Category;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

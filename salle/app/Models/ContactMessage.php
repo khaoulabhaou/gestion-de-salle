@@ -10,9 +10,13 @@ class ContactMessage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'name', 'email', 'subject', 'message',
+        'user_id', 'name', 'email', 'subject', 'message', 'status'
     ];
 
+    protected $attributes = [
+        'status' => false,
+    ];
+    
     // Define the relationship with the User model
     public function user()
     {

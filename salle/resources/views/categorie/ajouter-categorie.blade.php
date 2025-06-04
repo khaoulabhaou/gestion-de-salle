@@ -7,7 +7,7 @@
 <div class="main-banner" id="top">
     <div class="video-overlay header-text"></div>
 </div>
-<div class="container" style="margin-top: 7rem">
+<div class="container" style="margin-top: 6rem">
     <div class="mb-4 text-end">
         <a href="{{ url('/cours/catégorie/catégorie-list') }}" class="btn btn-outline-secondary">
             <i class="fas fa-arrow-left me-2"></i> Retour
@@ -33,6 +33,14 @@
             <input type="file" name="image" id="image" class="form-control w-50 mb-3 mt-1 p-2 border rounded">
         </div>
 
+        <!-- Description -->
+        <div>
+            <label for="description" class="block text-sm font-medium text-gray-700 mt-3">Description</label>
+            <textarea name="description" id="description" rows="9" class="form-control w-50 mb-3 mt-1 p-2 border rounded"></textarea>
+            @error('description')
+                <div class="invalid-feedback"> {{$message}} </div>
+            @enderror
+        </div>
         <!-- Submit -->
         <div>
         <button id="addbtn" type="submit" class="text-white px-4 py-2 rounded" style="background-color: #ed653b">

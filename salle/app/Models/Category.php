@@ -11,6 +11,7 @@ class Category extends Model
     protected $fillable = [
         'nom',
         'image',
+        'description',
     ];
 
     public function cours(){
