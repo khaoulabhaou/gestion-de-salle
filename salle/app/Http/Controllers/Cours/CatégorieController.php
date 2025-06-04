@@ -14,10 +14,13 @@ class CatégorieController extends Controller
         return view('categorie.categorie-list', compact('categories'));
     }
 
+    public function indexCour(){
+        $categories = Category::all();
+        return view('classes', compact('categories'));
+    }
     public function show($id){
 
         $categorie = Category::with(['coaches', 'cours', 'cours.coach'])->findOrFail($id);
-        // $membersCount = 0;
         return view('categorie.categorie-details', compact('categorie'));
     }
 
@@ -29,12 +32,16 @@ class CatégorieController extends Controller
         $request -> validate([
             'nom' => 'required|string|max:255|unique:categories,nom',   
             'image' => 'nullable|mimes:jpg,png,gif,jpeg',
+            'description' => 'nullable|string|max:650',
         ],[
             'nom.unique' => 'Ce titre de catégorie existe déjà',
+            'description.max' => 'La description doit être inférieure ou égale à 650 caractères',
         ]);
 
         $categorie = new Category();
         $categorie->nom = $request->nom;
+        $categorie->description = $request->description;
+
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('categories', 'public');
@@ -59,9 +66,14 @@ class CatégorieController extends Controller
         $request -> validate([
             'nom' => 'required',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif',
+            'description' => 'nullable|string|max:650',
+        ],[
+            'nom.unique' => 'Ce titre de catégorie existe déjà',
+            'description.max' => 'La description doit être inférieure ou égale à 650 caractères',
         ]);
 
         $categorie->nom = $request->nom;
+        $categorie->description = $request->description;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('categories', 'public');

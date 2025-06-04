@@ -14,7 +14,7 @@
                         <li class="scroll-to-section"><a href="{{ url('/cours/list-cours') }}">Cours</a></li>
                         <li class="scroll-to-section"><a href="{{ url('/membership/list-membership') }}">Memberships</a></li>
                         <li class="scroll-to-section"><a href="{{ url('/membres/list-membre') }}">Membres</a></li>
-                        <li class="scroll-to-section"><a href="">Messages</a></li>
+                        <li class="scroll-to-section"><a href="{{ url('/admin/messages') }}">Messages</a></li>  
 
                         @auth
                             <li class="main-button">

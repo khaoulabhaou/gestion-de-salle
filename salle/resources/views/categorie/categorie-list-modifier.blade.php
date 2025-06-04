@@ -33,6 +33,15 @@
             <input type="file" value="{{ old('image', $categorie->image) }}" name="image" id="image" class="form-control w-50 mb-3 mt-1 p-2 border rounded">
         </div>
 
+        <!-- Description -->
+        <div>
+            <label for="description" class="block text-sm font-medium text-gray-700 mt-3">Description</label>
+            <textarea name="description" id="description" rows="9" class="form-control w-50 mb-3 mt-1 p-2 border rounded @error('description') is-invalid @enderror">{{ old('description', $categorie->description ?? '') }}</textarea>
+            @error('description')
+                <div class="invalid-feedback mb-3"> {{$message}} </div>
+            @enderror
+        </div>
+
         <!-- Submit -->
         <button id="addbtn" type="submit" class="text-white px-4 py-2 rounded" style="background-color: #ed653b">
             Modifier Catégorie
