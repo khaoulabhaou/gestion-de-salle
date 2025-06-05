@@ -37,8 +37,9 @@
         @yield('content')
     </main>
     
-    @include('layouts.footer')
-
+    @if (!isset($hideFooter) || !$hideFooter)
+        @include('layouts.footer')
+    @endif
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     

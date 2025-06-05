@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title', 'Admin Dashboard')
-
 @section('content')
 <div class="main-banner" id="top">
     <div class="video-overlay header-text">
@@ -23,11 +22,11 @@
     <div id="overlay" class="overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar fixed lg:relative w-64 h-full bg-white shadow-lg z-50">
+    <aside id="sidebar" class="sidebar fixed lg:relative w-64 h-full bg-white shadow-lg z-50 overflow-y-auto">
         <div class="p-4 border-b border-gray-200 mt-1">
-            <h1 class="text-xl font-bold text-blue-600 flex items-center" style="color: #ed653b">
+            <h1 class="text-xl font-bold text-blue-600 flex items-center" style="color: #ed653b;font-size:19px">
                 <i class="fas fa-crown mr-2"></i>
-                Admin Dashboard
+                Panneau d'Admin
             </h1>
         </div>
 
@@ -152,32 +151,32 @@
                 </ul>
             </div>
             <!-- Planning -->
-            {{-- <div class="pl-4 mb-4">
+            <div class="pl-4" style="margin-bottom:5rem">
                 <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
                     <i class="fas fa-calendar-alt mr-2"></i>
                     <span>Planning</span>
                 </div>
                 <ul class="mt-2">
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/horaire/ajouter') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-calendar-day mr-3"></i>
                             <span>Planning Journalier</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
+                        <a href="{{ url('/horaire/list') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-calendar-week mr-3"></i>
                             <span>Vue Hebdomadaire</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="#" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-tasks mr-3"></i>
                             <span>Tâches</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
-            </div> --}}
+            </div>
         </nav>
     </aside>
 
@@ -259,7 +258,7 @@
                         </a>
                     </button>
                     <button class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-green-50 hover:border-green-200 transition-colors">
-                        <a href="{{ url('/membership/create-membership') }}" class="link-item">
+                        <a href="{{ url('/horaire/list') }}" class="link-item">
                             <i class="fas fa-calendar-plus text-yellow-500 mr-2"></i>
                             <span>Planifier Séance</span>
                         </a>

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Coache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Planning extends Model
 {
@@ -12,10 +13,17 @@ class Planning extends Model
     protected $fillable = [
         'jour',
         'heure',
-        'cours_id'
+        'cour_id',
+        'coache_id',
+        'heure_debut',
+        'heure_fin'        
     ];
 
     public function cour(){
         return $this -> belongsTo(Cour::class);
+    }
+
+    public function coache(){
+        return $this -> belongsTo(Coache::class);
     }
 }
