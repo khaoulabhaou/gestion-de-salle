@@ -15,6 +15,7 @@ class CreatePlanningsTable extends Migration
             $table->time('heure_debut');
             $table->time('heure_fin');
             $table->foreignId('cour_id')->constrained('cours');
+            $table->foreignId('coache_id')->constrained('coaches');
             $table->timestamps();
         });
     }

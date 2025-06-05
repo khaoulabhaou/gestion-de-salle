@@ -14,6 +14,7 @@ use App\Http\Controllers\contact\ContactController;
 use App\Http\Controllers\cours\CatégorieController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\horaires\HoraireController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\membership\MembershipController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
@@ -177,13 +178,23 @@ Route::middleware('auth', 'admin')->group(function() {
     Route::put('/membres/{id}', [MemberController::class, 'update'])->name('membre-update');
     Route::delete('/membres/{id}/supprimer', [MemberController::class, 'destroy'])->name('membre-destroy');
 });
+
+// --------------------------------------------
+// Horaires Routes for Admin
+// --------------------------------------------
+Route::middleware('auth', 'admin')->group(function(){
+    Route::get('/horaire/ajouter', [HoraireController::class, 'create'])->name('horaire.create');
+    Route::post('/horaire/ajouter', [HoraireController::class, 'store'])->name('horaire.store');
+    Route::get('/horaire/list', [HoraireController::class, 'indexAdmin'])->name('horaire.store');
+
+});
 // --------------------------------------------
 // Public Views for User
 // --------------------------------------------
 Route::middleware('auth', 'user')->group(function (){
     Route::get('/', fn() => view('index'))->name('index');
     Route::get('/about', fn () => view('about'));
-    Route::get('/schedules', fn () => view('schedules'))->name('schedules');
+    Route::get('/schedules', [HoraireController::class, 'index'])->name('schedules');
     Route::get('/trainers', fn () => view('trainers'))->name('trainers');
     Route::get('/contact', fn () => view('contact'))->name('contact');    
 });
