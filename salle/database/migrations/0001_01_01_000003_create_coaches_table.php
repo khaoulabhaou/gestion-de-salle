@@ -13,7 +13,7 @@ class CreateCoachesTable extends Migration
             $table->id();
             $table->string('nom_complet');
             $table->string('email')->unique();
-            $table->foreignId('categorie')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('categorie')->nullable()->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

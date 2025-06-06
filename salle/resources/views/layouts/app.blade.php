@@ -25,6 +25,8 @@
     @auth
     @if(auth()->user()->role === 'admin')
         @include('layouts.headerAdmin')
+    @elseif(auth()->user()->role === 'coach')
+        @include('layouts.headerCoache')
     @else
         @include('layouts.header')
     @endif

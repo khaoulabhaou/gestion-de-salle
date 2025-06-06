@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Cours\AjouterCours;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\membership\MembershipAdminController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\CoachePageController;
 
 // --------------------------------------------
 // Guest Routes (register, login, forgot password)
@@ -186,8 +188,25 @@ Route::middleware('auth', 'admin')->group(function(){
     Route::get('/horaire/ajouter', [HoraireController::class, 'create'])->name('horaire.create');
     Route::post('/horaire/ajouter', [HoraireController::class, 'store'])->name('horaire.store');
     Route::get('/horaire/list', [HoraireController::class, 'indexAdmin'])->name('horaire.store');
-
 });
+// --------------------------------------------
+// Roles Routes
+// --------------------------------------------
+Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+Route::post('/admin/users/update-role', [UserController::class, 'updateRole'])->name('admin.users.updateRole');
+
+// --------------------------------------------
+// Coaches Routes
+// --------------------------------------------
+Route::prefix('coach')->middleware(['auth', 'coach'])->group(function () {
+    Route::get('/cours', [CoachePageController::class, 'voirCours']);
+    Route::get('/planning/hebdomadaire', [CoachePageController::class, 'planningHebdo']);
+    Route::get('/membres', [CoachePageController::class, 'listeMembres']);
+});
+Route::middleware(['auth', 'coach'])->group(function () {
+    Route::get('/coach/index',[CoachePageController::class, 'index']);
+});
+
 // --------------------------------------------
 // Public Views for User
 // --------------------------------------------
@@ -198,7 +217,12 @@ Route::middleware('auth', 'user')->group(function (){
     Route::get('/trainers', fn () => view('trainers'))->name('trainers');
     Route::get('/contact', fn () => view('contact'))->name('contact');    
 });
-
+Route::middleware('auth', 'user')->group(function (){
+    Route::get('/contact', fn () => view('contact'))->name('contact');    
+});
+Route::middleware('auth', 'coach')->group(function (){
+    Route::get('/contact', fn () => view('contact'))->name('contact');    
+});
 // --------------------------------------------
 // Public Views for Admin
 // --------------------------------------------
