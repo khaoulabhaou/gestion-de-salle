@@ -25,5 +25,16 @@ class Coache extends Model
         return $this->hasMany(Cour::class);
     }
 
+    public function membres()
+    {
+        return $this->belongsToMany(Member::class, 'coache_member', 'coache_id', 'membres_id');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 
 }

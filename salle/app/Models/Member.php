@@ -48,4 +48,10 @@ class Member extends Model
         return $this->belongsTo(Membership::class);
     }
 
+    public function coaches()
+    {
+        return $this->belongsToMany(Coache::class, 'coache_member', 'membres_id', 'coache_id');
+    }
+
+
 }
