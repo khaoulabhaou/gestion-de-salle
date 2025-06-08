@@ -40,10 +40,10 @@
         <table class="table table-hover align-middle">
             <thead class="table-light">
                 <tr>
-                    <th>name</th>
-                    <th>description</th>
-                    <th>price</th>
-                    <th>duration</th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Durée</th>
                     <th>Actions</th>
                 </tr>
             </thead>
