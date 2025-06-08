@@ -154,13 +154,13 @@
             <div class="pl-4" style="margin-bottom:1rem">
                 <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
                     <i class="fas fa-calendar-alt mr-2"></i>
-                    <span>Planning</span>
+                    <span>Horaire</span>
                 </div>
                 <ul class="mt-2">
                     <li>
                         <a href="{{ url('/horaire/ajouter') }}" class="sidebar-item flex items-center px-4 py-2 text-gray-700 rounded-md">
                             <i class="fas fa-calendar-day mr-3"></i>
-                            <span>Planning Journalier</span>
+                            <span>Horaire Journalier</span>
                         </a>
                     </li>
                     <li>

@@ -14,7 +14,7 @@
                 <div class="section-heading dark-bg">
                     <h2>Horaires des <em>Cours</em></h2>
                     <img src="{{ asset('images/line-dec.png') }}" alt="">
-                    <p>Consultez nos plannings hebdomadaires pour organiser vos séances d'entraînement.</p>
+                    <p>Consultez nos horaires hebdomadaires pour organiser vos séances d'entraînement.</p>
                 </div>
             </div>
         </div>

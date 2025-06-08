@@ -48,7 +48,7 @@
             <div class="pl-4 mb-4">
                 <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
                     <i class="fas fa-calendar-alt mr-2"></i>
-                    <span>Planning</span>
+                    <span>Horaire</span>
                 </div>
                 <ul class="mt-2">
                     <li>
@@ -131,7 +131,7 @@
                     </a>
                     <a href="{{ url('/coach/planning/hebdomadaire') }}" class="w-full min-w-[200px] flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50 transition-colors" style="width: 40%">
                         <i class="fas fa-calendar text-blue-500 mr-2"></i>
-                        <span>Voir Planning</span>
+                        <span>Voir l'Horaire</span>
                     </a>
                 </div>
             </div>
