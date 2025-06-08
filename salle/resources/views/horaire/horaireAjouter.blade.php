@@ -36,7 +36,7 @@
 
         <form action="{{ route('horaire.store') }}" method="POST">
             @csrf
-
+            @method('post')
             <div class="mb-3">
                 <label for="cour_id" class="form-label">Titre du cours</label>
             <select name="cour_id" id="cour_id" class="form-control">
@@ -66,8 +66,8 @@
                     <option value="Mercredi">Mercredi</option>
                     <option value="Jeudi">Jeudi</option>
                     <option value="Vendredi">Vendredi</option>
-                    <option value="Samedi">Samedi</option>
-                    <option value="Dimanche">Dimanche</option>
+                    {{-- <option value="Samedi">Samedi</option> --}}
+                    {{-- <option value="Dimanche">Dimanche</option> --}}
                 </select>
             </div>
 

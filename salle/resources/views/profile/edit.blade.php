@@ -6,16 +6,17 @@
 <div class="main-banner" id="top">
     <div class="video-overlay header-text"></div>
 </div>
+
 <link rel="stylesheet" href="/css/profile.css">
+
 <div class="profile-container" style="margin-top: 8rem; max-width: 900px; margin-left: auto; margin-right: auto;">
     <h1 style="text-align:center;">Votre Profil</h1>
 
-@if(session('success'))
-    <div style="color: #ed563b;">
-        {{ session('success') }}
-    </div>
-@endif
-
+    @if(session('success'))
+        <div style="color: #ed563b;">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -23,11 +24,11 @@
         <!-- Photo de profil -->
         <div style="margin-bottom: 30px;">
             <div style="text-align: center;">
-                 @if($user->pfp)
-                     <img src="{{ asset('storage/' . $user->pfp) }}" 
-                          alt="Photo de profil" 
-                          style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0,0,0,0.2);">
-                 @endif
+                @if($user->pfp)
+                    <img src="{{ asset('storage/' . $user->pfp) }}"
+                        alt="Photo de profil"
+                        style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0,0,0,0.2);">
+                @endif
             </div>
             <div style="margin-top: 3rem;">
                 <label for="form-label">Choisissez votre photo de profil</label>
@@ -46,19 +47,29 @@
                         <option {{ $user->gender === 'Femme' ? 'selected' : '' }}>Femme</option>
                     </select>
                 </div>
-                <div class="form-group"><label>Objectif</label><input name="goal" value="{{ $user->goal }}"></div>
+
+                @can('isUser')
+                    <div class="form-group">
+                        <label>Objectif</label>
+                        <input name="goal" value="{{ $user->goal }}">
+                    </div>
+                @endcan
             </div>
 
             <div style="flex: 1;">
                 <div class="form-group"><label>Email</label><input name="email" value="{{ $user->email }}"></div>
                 <div class="form-group"><label>Date de naissance</label><input type="date" name="dob" value="{{ $user->dob }}"></div>
                 <div class="form-group"><label>Adresse</label><input name="address" value="{{ $user->address }}"></div>
-                <div class="form-group">
-                    <label>Abonnement actuel</label>
-                    <a href="{{ route('membership.info') }}" class="btn btn-outline-dark">Voir les détails</a>
-                </div>
+
+                @can('isUser')
+                    <div class="form-group">
+                        <label>Abonnement actuel</label>
+                        <a href="{{ route('membership.info') }}" class="btn btn-outline-dark">Voir les détails</a>
+                    </div>
+                @endcan
             </div>
         </div>
+
         <button id="updateBtn" type="submit">
             {{ session('success') ? 'Enregistrer les modifications' : 'Mettre à jour le profil' }}
         </button>
@@ -69,7 +80,6 @@
         @csrf
         <button style="margin-top: 1rem;" class="btn btn-outline-danger" type="submit">Se déconnecter</button>
     </form>
-
 </div>
 
 <script>

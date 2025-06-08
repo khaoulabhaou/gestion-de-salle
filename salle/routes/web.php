@@ -186,7 +186,10 @@ Route::middleware('auth', 'admin')->group(function() {
 Route::middleware('auth', 'admin')->group(function(){
     Route::get('/horaire/ajouter', [HoraireController::class, 'create'])->name('horaire.create');
     Route::post('/horaire/ajouter', [HoraireController::class, 'store'])->name('horaire.store');
-    Route::get('/horaire/list', [HoraireController::class, 'indexAdmin'])->name('horaire.store');
+    Route::get('/horaire/list', [HoraireController::class, 'indexAdmin'])->name('horaire.index');
+    Route::get('/horaire/{id}/edit', [HoraireController::class, 'edit'])->name('horaire.edit');
+    Route::put('/horaire/{id}/update', [HoraireController::class, 'update'])->name('horaire.update');
+    Route::delete('/horaire/{id}/destroy', [HoraireController::class, 'destroy'])->name('horaire.destroy');
 });
 // --------------------------------------------
 // Roles Routes

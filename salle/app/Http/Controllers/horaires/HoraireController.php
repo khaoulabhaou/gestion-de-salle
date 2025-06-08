@@ -48,7 +48,40 @@ class HoraireController extends Controller
         ]);
 
     
-        return redirect()->route('horaire.create')->with('success', 'Horaire ajouté avec succès !');
+        return redirect()->route('horaire.index')->with('success', 'Horaire ajouté avec succès !');
     }
 
+    public function edit($id){
+        $plannings = Planning::findOrFail($id);
+        $cours = Cour::all();
+        $coaches = Coache::all();
+        return view('horaire.horaireModifie', compact('plannings','cours','coaches'));
+    }
+
+    public function update(Request $request, $id){
+        $plannings = Planning::findOrFail($id);
+        $request->validate([
+            'coache_id' => 'required',
+            'cour_id' => 'required',
+            'jour' => 'required|string',
+            'heure_debut' => 'required',
+            'heure_fin' => 'required',
+        ]);
+
+        $plannings->update([
+             'coache_id' => $request->coache_id,
+            'cour_id' => $request->cour_id,
+            'jour' => $request->jour,
+            'heure_debut' => $request->heure_debut,
+            'heure_fin' => $request->heure_fin,
+        ]);
+
+        return redirect()->route('horaire.index', 'Horaire modifier avec succès !');
+    }
+
+    public function destroy($id){
+        $plannings = Planning::findOrFail($id);
+        $plannings->delete();
+        return redirect()->route('horaire.index')->with('success', 'Horaire supprimé avec succès !');
+    }
 }
