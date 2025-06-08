@@ -216,11 +216,8 @@ Route::middleware('auth', 'user')->group(function (){
     Route::get('/trainers', fn () => view('trainers'))->name('trainers');
     Route::get('/contact', fn () => view('contact'))->name('contact');    
 });
-Route::middleware('auth', 'user')->group(function (){
-    Route::get('/contact', fn () => view('contact'))->name('contact');    
-});
 Route::middleware('auth', 'coach')->group(function (){
-    Route::get('/contact', fn () => view('contact'))->name('contact');    
+    Route::get('/coache/contact', fn () => view('contact'))->name('contactCoache');    
 });
 // --------------------------------------------
 // Public Views for Admin

@@ -58,5 +58,18 @@
     <script src="{{ asset('js/imgfix.min.js') }}"></script>
     <script src="{{ asset('js/accordions.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            const menuTrigger = document.getElementById("menuTrigger");
+            const nav = document.getElementById("navCollapse");
+        
+            menuTrigger.addEventListener("click", function (e) {
+                e.preventDefault(); // ⛔ prevents page reload
+                nav.classList.toggle("active");
+            });
+        });
+    </script>
+
+
 </body>
 </html>
