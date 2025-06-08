@@ -7,12 +7,19 @@
 </div>
 <div class="container" style="margin-top:7rem">
     <h2 class="mb-4">Mes Cours</h2>
-    <ul>
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+        </tr>
         @forelse($cours as $cours)
-            <li>{{ $cours->titre }} ({{ $cours->description }})</li>
+        <tr>
+            <td>{{ $cours->titre }}</td>
+            <td>{{ $cours->description }}</td>
+        </tr>
         @empty
-            <li>Aucun cours disponible.</li>
+            <tr>Aucun cours disponible.</tr>
         @endforelse
-    </ul>
+    </table>
 </div>
 @endsection

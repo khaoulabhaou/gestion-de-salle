@@ -12,7 +12,7 @@
                     <ul class="nav">
                         <li><a href="{{ url('/coach/cours') }}">Mes Cours</a></li>
                         <li><a href="{{ url('/coach/planning/hebdomadaire') }}">Mes Séances</a></li>
-                        <li><a href="{{ url('/coach/membres') }}">Mes Membres</a></li>
+                        {{-- <li><a href="{{ url('/coach/membres') }}">Mes Membres</a></li> --}}
                         <li><a href="{{ url('/contact') }}">Messages</a></li>
 
                         @auth

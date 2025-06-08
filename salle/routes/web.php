@@ -143,7 +143,6 @@ Route::middleware('auth','admin')->group( function() {
     Route::get('/cours/{id}/edit', [Listscontroller::class, 'edit'])->name('cours.edit');
     Route::put('/cours/{id}', [Listscontroller::class, 'update'])->name('cours.update');
     Route::delete('/cours/{id}', [Listscontroller::class, 'destroy'])->name('cours.destroy');
-    
 });
 
 // --------------------------------------------

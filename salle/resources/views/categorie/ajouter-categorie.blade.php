@@ -13,7 +13,6 @@
             <i class="fas fa-arrow-left me-2"></i> Retour
         </a>
     </div>
-
     <h2 class="text-2xl font-bold mb-4">Ajouter une nouvelle Catégorie</h2>
 
     <form action="{{ route('categorie.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">

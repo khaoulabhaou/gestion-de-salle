@@ -61,7 +61,7 @@
             </div>
 
             <!-- Membres assignés -->
-            <div class="pl-4 mb-4">
+            {{-- <div class="pl-4 mb-4">
                 <div class="flex items-center text-gray-500 text-sm font-medium uppercase tracking-wider">
                     <i class="fas fa-users mr-2"></i>
                     <span>Mes Membres</span>
@@ -74,7 +74,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
         </nav>
     </aside>
 
@@ -83,8 +83,8 @@
         <div class="bg-white rounded-lg shadow p-6">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Bienvenue Coach</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <div class="bg-green-50 p-6 rounded-lg border border-green-100">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 justify-items-center">
+                <div class="w-full max-w-md bg-green-50 p-6 rounded-lg border border-green-100">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-green-100 text-green-600">
                             <i class="fas fa-book-open text-xl"></i>
@@ -95,20 +95,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-blue-100 text-blue-600">
-                            <i class="fas fa-users text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-medium text-gray-500">Mes Membres</p>
-                            {{-- <p class="text-2xl font-bold text-gray-800">{{ $mesMembres }}</p> --}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
+            
+                <div class="w-full max-w-md bg-yellow-50 p-6 rounded-lg border border-yellow-100">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
                             <i class="fas fa-calendar-alt text-xl"></i>
@@ -120,22 +108,30 @@
                     </div>
                 </div>
             </div>
+                {{-- <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Mes Membres</p> --}}
+                            {{-- <p class="text-2xl font-bold text-gray-800">{{ $mesMembres }}</p> --}}
+                        {{-- </div>
+                    </div>
+                </div> --}}
+
 
             <!-- Quick Actions -->
             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                <h3 class="text-lg font-medium text-gray-800 mb-4">Actions Rapides</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <a href="{{ url('/coach/cours') }}" class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-green-50">
+                <h3 class="text-lg font-medium text-gray-800 mb-4 text-center">Actions Rapides</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="{{ url('/coach/cours') }}" class="w-full min-w-[200px] flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-green-50 transition-colors" style="width: 40%">
                         <i class="fas fa-plus text-green-500 mr-2"></i>
                         <span>Voir mes Cours</span>
                     </a>
-                    <a href="{{ url('/coach/planning/hebdomadaire') }}" class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50">
+                    <a href="{{ url('/coach/planning/hebdomadaire') }}" class="w-full min-w-[200px] flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-blue-50 transition-colors" style="width: 40%">
                         <i class="fas fa-calendar text-blue-500 mr-2"></i>
                         <span>Voir Planning</span>
-                    </a>
-                    <a href="{{ url('/coach/membres') }}" class="flex items-center justify-center p-4 bg-white rounded-lg border border-gray-200 hover:bg-yellow-50">
-                        <i class="fas fa-envelope text-yellow-500 mr-2"></i>
-                        <span>List de membres</span>
                     </a>
                 </div>
             </div>

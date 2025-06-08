@@ -18,24 +18,26 @@ class Listscontroller extends Controller
 
     public function index(Request $request)
     {
-        $search = $request->input('search');
+    $search = $request->input('search');
     
-        $courses = Cour::with(['category', 'coach'])
-            ->where(function ($query) use ($search) {
-                $query->where('titre', 'like', "%$search%")
-                    ->orWhereHas('category', function ($q) use ($search) {
-                        $q->where('nom', 'like', "%$search%");
-                    })
-                    ->orWhere('duree', 'like', "%$search%")
-                    ->orWhere('capacite_max', 'like', "%$search%")
-                    ->orWhereHas('coach', function ($q) use ($search) {
-                        $q->where('nom_complet', 'like', "%$search%");
-                    });
-            })
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+    $courses = Cour::with(['category', 'coach'])
+        ->when($search, function ($query) use ($search) {
+            return $query->where(function ($q) use ($search) {
+                $q->where('titre', 'like', "%$search%")
+                  ->orWhere('duree', 'like', "%$search%")
+                  ->orWhere('capacite_max', 'like', "%$search%")
+                  ->orWhereHas('category', function ($q) use ($search) {
+                      $q->where('nom', 'like', "%$search%");
+                  })
+                  ->orWhereHas('coach', function ($q) use ($search) {
+                      $q->where('nom_complet', 'like', "%$search%");
+                  });
+            });
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
     
-        return view('cours.list-cours', compact('courses', 'search'));
+    return view('cours.list-cours', compact('courses', 'search'));
     }
 
 

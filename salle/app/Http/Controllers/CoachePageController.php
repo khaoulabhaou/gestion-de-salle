@@ -35,9 +35,13 @@ class CoachePageController extends Controller
 
     public function planningHebdo()
     {
-        $seances = Planning::where('coache_id', auth()->id())->get();
-        return view('coachePanel.planning', compact('seances'));
+        $coache = Coache::where('user_id', auth()->id())->with('plannings.cour')->first();
+    
+        $plannings = $coache ? $coache->plannings->sortBy('heure_debut') : collect();
+    
+        return view('coachePanel.planning', compact('plannings'));
     }
+
 
     public function listeMembres()
     {
@@ -45,5 +49,4 @@ class CoachePageController extends Controller
         $membres = $coache ? $coache->membres : collect();
         return view('coachePanel.membreslist', compact('membres'));
     }
-
 }
