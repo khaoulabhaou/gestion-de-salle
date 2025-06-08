@@ -9,7 +9,7 @@
                     <!-- ***** Logo - Fin ***** -->
 
                     <!-- ***** Menu - Début ***** -->
-                    <ul class="nav">
+                    <ul class="nav" id="nav">
                         <li class="scroll-to-section"><a href="{{ url('/coache/coache-list') }}">Entraînreurs</a></li>
                         <li class="scroll-to-section"><a href="{{ url('/cours/list-cours') }}">Cours</a></li>
                         <li class="scroll-to-section"><a href="{{ url('/membership/list-membership') }}">Memberships</a></li>
@@ -33,3 +33,13 @@
     </div>
 </header>
 <!-- ***** Zone d'en-tête - Fin ***** -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuTrigger = document.querySelector(".menu-trigger");
+        const nav = document.querySelector(".main-nav ul");
+
+        menuTrigger.addEventListener("click", function () {
+            nav.classList.toggle("active");
+        });
+    });
+</script>
