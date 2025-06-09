@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\Coache;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,13 @@ class UserController extends Controller
         $user = User::findOrFail($request->user_id);
         $user->role = $request->role;
         $user->save();
-    
+        if ($request->role === 'admin' && !Admin::where('email', $user->email)->exists()) {
+            Admin::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'password' => $user->password, // assuming it's already hashed in users table
+            ]);
+        }
         if ($request->role === 'coach') {
             Coache::firstOrCreate(
                 ['email' => $user->email],
