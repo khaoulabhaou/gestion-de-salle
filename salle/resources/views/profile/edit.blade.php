@@ -48,12 +48,13 @@
                     </select>
                 </div>
 
-                @can('isUser')
-                    <div class="form-group">
-                        <label>Objectif</label>
-                        <input name="goal" value="{{ $user->goal }}">
-                    </div>
-                @endcan
+            @if(auth()->user()->role === 'user')
+                <div class="form-group">
+                    <label>Objectif</label>
+                    <input name="goal" value="{{ $user->goal }}">
+                </div>
+            @endif
+
             </div>
 
             <div style="flex: 1;">
@@ -61,12 +62,12 @@
                 <div class="form-group"><label>Date de naissance</label><input type="date" name="dob" value="{{ $user->dob }}"></div>
                 <div class="form-group"><label>Adresse</label><input name="address" value="{{ $user->address }}"></div>
 
-                @can('isUser')
+                @if(auth()->user()->role === 'user')
                     <div class="form-group">
                         <label>Abonnement actuel</label>
                         <a href="{{ route('membership.info') }}" class="btn btn-outline-dark">Voir les détails</a>
                     </div>
-                @endcan
+                @endif
             </div>
         </div>
 
