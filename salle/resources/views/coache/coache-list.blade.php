@@ -10,7 +10,7 @@
     
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">List des Entraînreurs</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">List des Entraîneurs</h1>
         </div>
         <div class="col-md-auto text-end">
             <a href="{{ url('/coache/ajouter-coache') }}" class="btn text-white" style="background-color: #eb653b;" id="addbtn">

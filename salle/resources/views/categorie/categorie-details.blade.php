@@ -41,7 +41,7 @@
             </tr>
         </thead>
     <tbody>
-        @foreach ($categorie->cours as $cours)
+        @foreach ($cours as $cours)
             <tr>
                 <td>{{ $categorie->nom }}</td>
                 <td>{{ $cours->coach->nom_complet ?? '—' }}</td>

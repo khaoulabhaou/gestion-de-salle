@@ -86,7 +86,6 @@
                     <div class="text-muted small">
                         <p>Cours: {{ $categorie->cours->count() }}</p>
                         <p>Entraîneurs: {{ $categorie->coaches_count}}</p>
-                        <p>Membres: {{ $categorie->members_count ?? 0 }}</p>
                     </div>
                     <div class="d-flex align-items-center gap-2 mt-3">
                         <a href="{{ route('categorie-details', $categorie->id) }}" class="btn btn-success">Voir plus</a>

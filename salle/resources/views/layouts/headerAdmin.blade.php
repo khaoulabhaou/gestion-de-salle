@@ -10,7 +10,7 @@
 
                     <!-- ***** Menu - Début ***** -->
                     <ul class="nav" id="nav">
-                        <li class="scroll-to-section"><a href="{{ url('/coache/coache-list') }}">Entraînreurs</a></li>
+                        <li class="scroll-to-section"><a href="{{ url('/coache/coache-list') }}">entraîneurs</a></li>
                         <li class="scroll-to-section"><a href="{{ url('/cours/list-cours') }}">Cours</a></li>
                         <li class="scroll-to-section"><a href="{{ url('/membership/list-membership') }}">Memberships</a></li>
                         <li class="scroll-to-section"><a href="{{ url('/membres/list-membre') }}">Membres</a></li>

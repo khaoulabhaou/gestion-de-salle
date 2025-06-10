@@ -34,7 +34,7 @@
         <main class="container mx-auto px-4 py-8 animate-fade-in">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
                 <div>
-                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Modifier un entraînreur</h1>
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Modifier un entraîneur</h1>
                 </div>
                     <a href="{{url('/coache/coache-list') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center">
                         <i class="fas fa-arrow-left mr-2"></i> Retour
@@ -49,11 +49,11 @@
                         @method('PUT')
                         <!-- Basic Information Section -->
                         <div>
-                            <h2 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Informations D'entraînreur</h2>
+                            <h2 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Informations D'entraîneur</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Nom et Prénom -->
                                 <div>
-                                    <label for="nom_complet" class="block text-sm font-medium text-gray-700 mb-1">Nom et prénom D'entraînreur*</label>
+                                    <label for="nom_complet" class="block text-sm font-medium text-gray-700 mb-1">Nom et prénom D'entraîneur*</label>
                                     <input type="text" value="{{ old('nom_complet', $coaches->nom_complet) }}" id="nom_complet" name="nom_complet" required class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:border-indigo-500 transition form-control">
                                 </div>
                                 <!-- Email -->
