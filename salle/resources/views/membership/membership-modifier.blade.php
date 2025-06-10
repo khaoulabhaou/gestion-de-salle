@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Ajouter cour')
+@section('title','Modifier Abonnement')
 
 @section('content')
 <div class="main-banner" id="top">

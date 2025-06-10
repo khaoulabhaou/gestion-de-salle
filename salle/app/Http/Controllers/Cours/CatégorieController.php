@@ -18,21 +18,22 @@ class CatégorieController extends Controller
         $categories = Category::all();
         return view('classes', compact('categories'));
     }
-public function show($id)
-{
-    $categorie = Category::with(['cours.coach'])->findOrFail($id);
-
-    $search = strtolower(request('search'));
-
-    $cours = $categorie->cours->filter(function ($item) use ($search, $categorie) {
-        return !$search ||
-            str_contains(strtolower($item->titre), $search) ||
-            str_contains(strtolower($item->coach->nom_complet ?? ''), $search) ||
-            str_contains(strtolower($categorie->nom), $search);
-    });
-
-    return view('categorie.categorie-details', compact('categorie', 'cours', 'search'));
-}
+    
+    public function show($id)
+    {
+        $categorie = Category::with(['cours.coach'])->findOrFail($id);
+    
+        $search = strtolower(request('search'));
+    
+        $cours = $categorie->cours->filter(function ($item) use ($search, $categorie) {
+            return !$search ||
+                str_contains(strtolower($item->titre), $search) ||
+                str_contains(strtolower($item->coach->nom_complet ?? ''), $search) ||
+                str_contains(strtolower($categorie->nom), $search);
+        });
+    
+        return view('categorie.categorie-details', compact('categorie', 'cours', 'search'));
+    }
 
 
 
