@@ -13,7 +13,7 @@
 
 <div class="container mt-5" style="margin-top: 6rem !important; max-width: 700px;">
         <div class="mb-4 text-end">
-        <a href="{{ url('/cours/catégorie/catégorie-list') }}" class="btn btn-outline-secondary">
+        <a href="{{ url('/horaire/list') }}" class="btn btn-outline-secondary">
             <i class="fas fa-arrow-left me-2"></i> Retour
         </a>
     </div>

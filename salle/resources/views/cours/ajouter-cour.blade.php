@@ -37,7 +37,7 @@
                     <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Ajouter un nouveau cours</h1>
                 </div>
                 <div class="mt-4 md:mt-0 flex space-x-3">
-                    <a href="{{url('/admin/dashboard') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center">
+                    <a href="{{url('/cours/list-cours') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition flex items-center">
                         <i class="fas fa-arrow-left mr-2"></i> Retour
                     </a>
                 </div>
