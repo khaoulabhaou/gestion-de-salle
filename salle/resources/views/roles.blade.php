@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="container" style="margin-top: 7rem">
-    <h2 class="mb-4">Users Management</h2>
+    <h2 class="mb-4">Gestion des utilisateurs</h2>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -17,10 +17,10 @@
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Current Role</th>
-                <th>Update Role</th>
+                <th>Nom</th>
+                <th>E-mail</th>
+                <th>Rôle actuel</th>
+                <th>Mettre à jour le rôle</th>
             </tr>
         </thead>
         <tbody>
