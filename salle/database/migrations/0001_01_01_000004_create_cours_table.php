@@ -15,7 +15,10 @@ class CreateCoursTable extends Migration
             $table->text('description')->nullable();
             $table->integer('duree'); // in minutes
             $table->integer('capacite_max');
-            $table->text('catégorie');
+            $table->foreignId('category_id')
+                  ->nullable()
+                  ->constrained('categories')
+                  ->nullOnDelete();
             $table->foreignId('coach_id')->constrained('coaches');
             $table->enum('statut', ['PLANIFIE', 'EN_COURS', 'TERMINE', 'ANNULE'])->default('PLANIFIE');
             $table->timestamps();

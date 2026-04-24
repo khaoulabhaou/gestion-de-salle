@@ -9,10 +9,10 @@ class UserOnly
 {
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role === 'user') {
+        if (Auth::check() && Auth::user()->role === 'user' or Auth::user()->role === '') {
             return $next($request);
         }
 
-        abort(500);
+        abort(403);
     }
 }

@@ -20,6 +20,6 @@ class CoacheOnly
             return $next($request);
         }
 
-        abort(500); // or redirect()->route('home')
+        abort(403); // or redirect()->route('home')
     }
 }

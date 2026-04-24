@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminOnly
 {
-    public function handle($request, Closure $next)
-    {
-        if (Auth::check() && Auth::user()->role === 'admin') {
-            return $next($request);
-        }
-
-        abort(500); // or redirect()->route('home')
+public function handle($request, Closure $next)
+{
+    if (Auth::check() && Auth::user()->role === 'admin') {
+        return $next($request);
     }
+
+    return abort(403);
+}
 }
