@@ -17,7 +17,7 @@ class UserOnly
             return redirect('/admin/dashboard');
         }
     
-        if (Auth::user()->role === 'user') {
+        if (Auth::user()->role === 'user' or Auth::user()->role === '') {
             return $next($request);
         }
     
