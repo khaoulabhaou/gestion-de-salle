@@ -11,10 +11,6 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-<<<<<<< HEAD
- public function store(LoginRequest $request): RedirectResponse
-{
-=======
     /**
      * Display the login view.
      */
@@ -52,7 +48,6 @@ class AuthenticatedSessionController extends Controller
     };
 
     return redirect()->intended('/');
->>>>>>> 25c5bbc (profile picture not showing)
     $request->validate([
         'email' => ['required', 'email'],
         'password' => ['required'],
@@ -66,16 +61,86 @@ class AuthenticatedSessionController extends Controller
 
     $request->session()->regenerate();
 
+    // Redirect based on role
     $user = Auth::user();
-
     if ($user->role === 'admin') {
-        return redirect('/admin/dashboard');
+        return redirect()->intended('/admin/dashboard');
     }
 
-    if ($user->role === 'coach') {
-        return redirect('/coach/index');
+    return redirect()->intended('/');
+            $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
     }
 
-    return redirect('/');
-}
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
+    $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
+    }
+
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
+            $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        return back()->withErrors([
+            'email' => __('auth.failed'),
+        ]);
+    }
+
+    $request->session()->regenerate();
+
+    // Redirect based on role
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->intended('/admin/dashboard');
+    }
+
+    return redirect()->intended('/');
+    }
+
+    /**
+     * Destroy an authenticated session.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }
