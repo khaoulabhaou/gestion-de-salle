@@ -9,13 +9,6 @@ class UserOnly
 {
     public function handle($request, Closure $next)
     {
-<<<<<<< HEAD
-        if (Auth::check() && Auth::user()->role === 'user' or Auth::user()->role === '') {
-            return $next($request);
-        }
-
-        abort(403);
-=======
         if (!Auth::check()) {
             return redirect('/login');
         }
@@ -29,6 +22,5 @@ class UserOnly
         }
     
         return abort(403);
->>>>>>> 25c5bbc (profile picture not showing)
     }
 }

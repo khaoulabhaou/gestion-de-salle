@@ -20,10 +20,6 @@ class CoacheOnly
             return $next($request);
         }
 
-<<<<<<< HEAD
-        abort(403); // or redirect()->route('home')
-=======
         return abort(403); // or redirect()->route('home')
->>>>>>> 25c5bbc (profile picture not showing)
     }
 }
